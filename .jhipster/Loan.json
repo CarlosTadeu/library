@@ -1,0 +1,50 @@
+{
+    "name": "Loan",
+    "fields": [
+        {
+            "fieldName": "loanDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateReturned",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateToBeReturned",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "numberOfRenewals",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "libraryUser",
+            "otherEntityRelationshipName": "loan",
+            "relationshipName": "user",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "copyBook",
+            "otherEntityRelationshipName": "loan",
+            "relationshipName": "copyBook",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200515184600",
+    "entityTableName": "loan",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

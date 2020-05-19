@@ -1,0 +1,29 @@
+{
+    "name": "CopyBook",
+    "fields": [
+        {
+            "fieldName": "available",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "book",
+            "otherEntityRelationshipName": "copyBooks",
+            "relationshipName": "book",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200515184500",
+    "entityTableName": "copy_book",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

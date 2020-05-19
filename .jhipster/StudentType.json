@@ -1,0 +1,37 @@
+{
+    "name": "StudentType",
+    "fields": [
+        {
+            "fieldName": "studentType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "numberOfDaysLoan",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "numberOfDaysRenewal",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "maxBooksOnLoan",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "maxRenewalNumber",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200515184700",
+    "entityTableName": "student_type",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

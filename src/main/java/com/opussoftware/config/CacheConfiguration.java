@@ -42,6 +42,18 @@ public class CacheConfiguration {
             createCache(cm, com.opussoftware.domain.User.class.getName());
             createCache(cm, com.opussoftware.domain.Authority.class.getName());
             createCache(cm, com.opussoftware.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.opussoftware.domain.LibraryUser.class.getName());
+            createCache(cm, com.opussoftware.domain.Author.class.getName());
+            createCache(cm, com.opussoftware.domain.Author.class.getName() + ".books");
+            createCache(cm, com.opussoftware.domain.Book.class.getName());
+            createCache(cm, com.opussoftware.domain.Book.class.getName() + ".copyBooks");
+            createCache(cm, com.opussoftware.domain.Book.class.getName() + ".subjects");
+            createCache(cm, com.opussoftware.domain.Book.class.getName() + ".authors");
+            createCache(cm, com.opussoftware.domain.CopyBook.class.getName());
+            createCache(cm, com.opussoftware.domain.Loan.class.getName());
+            createCache(cm, com.opussoftware.domain.StudentType.class.getName());
+            createCache(cm, com.opussoftware.domain.Subject.class.getName());
+            createCache(cm, com.opussoftware.domain.Subject.class.getName() + ".books");
             // jhipster-needle-ehcache-add-entry
         };
     }

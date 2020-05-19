@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-loan-heading">Create or edit a Loan</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_loanDate">Loan Date</label>
+                    <div class="input-group">
+                        <input id="field_loanDate" type="text" class="form-control" name="loanDate" ngbDatepicker #loanDateDp="ngbDatepicker" formControlName="loanDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="loanDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateReturned">Date Returned</label>
+                    <div class="input-group">
+                        <input id="field_dateReturned" type="text" class="form-control" name="dateReturned" ngbDatepicker #dateReturnedDp="ngbDatepicker" formControlName="dateReturned"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateReturnedDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateToBeReturned">Date To Be Returned</label>
+                    <div class="input-group">
+                        <input id="field_dateToBeReturned" type="text" class="form-control" name="dateToBeReturned" ngbDatepicker #dateToBeReturnedDp="ngbDatepicker" formControlName="dateToBeReturned"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateToBeReturnedDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numberOfRenewals">Number Of Renewals</label>
+                    <input type="number" class="form-control" name="numberOfRenewals" id="field_numberOfRenewals"
+                           formControlName="numberOfRenewals"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="userId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="libraryUserOption.id" *ngFor="let libraryUserOption of users; trackBy: trackById">{{ libraryUserOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_copyBook">Copy Book</label>
+                    <select class="form-control" id="field_copyBook" name="copyBook" formControlName="copyBookId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="copyBookOption.id" *ngFor="let copyBookOption of copybooks; trackBy: trackById">{{ copyBookOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="copyBook">
+            <h2><span>Copy Book</span> {{ copyBook.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Available</span></dt>
+                <dd>
+                    <span>{{ copyBook.available }}</span>
+                </dd>
+                <dt><span>Book</span></dt>
+                <dd>
+                    <div *ngIf="copyBook.bookId">
+                        <a [routerLink]="['/book', copyBook.bookId, 'view']">{{ copyBook.bookId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/copy-book', copyBook.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

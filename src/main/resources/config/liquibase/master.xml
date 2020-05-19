@@ -14,6 +14,17 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200515184200_added_entity_LibraryUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200515184300_added_entity_Author.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200515184400_added_entity_Book.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200515184500_added_entity_CopyBook.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200515184600_added_entity_Loan.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200515184700_added_entity_StudentType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200515184800_added_entity_Subject.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20200515184200_added_entity_constraints_LibraryUser.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200515184400_added_entity_constraints_Book.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200515184500_added_entity_constraints_CopyBook.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200515184600_added_entity_constraints_Loan.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

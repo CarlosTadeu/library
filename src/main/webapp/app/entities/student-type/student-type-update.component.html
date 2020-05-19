@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-student-type-heading">Create or edit a Student Type</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_studentType">Student Type</label>
+                    <input type="text" class="form-control" name="studentType" id="field_studentType"
+                           formControlName="studentType"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numberOfDaysLoan">Number Of Days Loan</label>
+                    <input type="number" class="form-control" name="numberOfDaysLoan" id="field_numberOfDaysLoan"
+                           formControlName="numberOfDaysLoan"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_numberOfDaysRenewal">Number Of Days Renewal</label>
+                    <input type="number" class="form-control" name="numberOfDaysRenewal" id="field_numberOfDaysRenewal"
+                           formControlName="numberOfDaysRenewal"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_maxBooksOnLoan">Max Books On Loan</label>
+                    <input type="number" class="form-control" name="maxBooksOnLoan" id="field_maxBooksOnLoan"
+                           formControlName="maxBooksOnLoan"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_maxRenewalNumber">Max Renewal Number</label>
+                    <input type="number" class="form-control" name="maxRenewalNumber" id="field_maxRenewalNumber"
+                           formControlName="maxRenewalNumber"/>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

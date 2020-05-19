@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="libraryUser">
+            <h2><span>Library User</span> {{ libraryUser.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Cpf</span></dt>
+                <dd>
+                    <span>{{ libraryUser.cpf }}</span>
+                </dd>
+                <dt><span>Rg</span></dt>
+                <dd>
+                    <span>{{ libraryUser.rg }}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ libraryUser.name }}</span>
+                </dd>
+                <dt><span>Username</span></dt>
+                <dd>
+                    <span>{{ libraryUser.username }}</span>
+                </dd>
+                <dt><span>Address</span></dt>
+                <dd>
+                    <span>{{ libraryUser.address }}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{ libraryUser.email }}</span>
+                </dd>
+                <dt><span>Phone Number</span></dt>
+                <dd>
+                    <span>{{ libraryUser.phoneNumber }}</span>
+                </dd>
+                <dt><span>Suspension Date</span></dt>
+                <dd>
+                    <span>{{ libraryUser.suspensionDate }}</span>
+                </dd>
+                <dt><span>Student Type</span></dt>
+                <dd>
+                    <div *ngIf="libraryUser.studentTypeId">
+                        <a [routerLink]="['/student-type', libraryUser.studentTypeId, 'view']">{{ libraryUser.studentTypeId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/library-user', libraryUser.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

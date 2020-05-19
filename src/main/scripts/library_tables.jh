@@ -1,0 +1,69 @@
+entity LibraryUser {
+	cpf String,
+    rg String,
+    name String,
+    username String,
+    address String,
+    email String,
+    phoneNumber String,
+    suspensionDate LocalDate,
+}
+
+entity Author {
+	name String
+}
+
+entity Book {
+	isbn String,
+    title String,
+    publisher String,
+    publicationYear Integer
+}
+
+entity CopyBook {
+	available Boolean
+}
+
+entity Loan {
+	loanDate LocalDate,
+    dateReturned LocalDate,
+    dateToBeReturned LocalDate,
+    numberOfRenewals Integer
+}
+
+entity StudentType {
+	studentType String,
+    numberOfDaysLoan Integer,
+    numberOfDaysRenewal Integer,
+    maxBooksOnLoan Integer,
+    maxRenewalNumber Integer
+}
+
+entity Subject {
+	subject String,
+}
+
+relationship ManyToMany {
+	Book{subjects} to Subject{books}
+    Book{authors} to Author{books}
+}
+
+relationship ManyToOne {
+	LibraryUser{studentType} to StudentType
+    CopyBook{book} to Book
+}
+
+relationship OneToMany {
+	Book{copyBooks} to CopyBook
+}
+
+relationship OneToOne {
+	Loan{user} to LibraryUser
+    Loan{copyBook} to CopyBook
+}
+
+dto * with mapstruct
+
+service all with serviceImpl
+
+paginate LibraryUser with pagination

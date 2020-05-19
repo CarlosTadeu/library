@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="loan">
+            <h2><span>Loan</span> {{ loan.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Loan Date</span></dt>
+                <dd>
+                    <span>{{ loan.loanDate }}</span>
+                </dd>
+                <dt><span>Date Returned</span></dt>
+                <dd>
+                    <span>{{ loan.dateReturned }}</span>
+                </dd>
+                <dt><span>Date To Be Returned</span></dt>
+                <dd>
+                    <span>{{ loan.dateToBeReturned }}</span>
+                </dd>
+                <dt><span>Number Of Renewals</span></dt>
+                <dd>
+                    <span>{{ loan.numberOfRenewals }}</span>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    <div *ngIf="loan.userId">
+                        <a [routerLink]="['/library-user', loan.userId, 'view']">{{ loan.userId }}</a>
+                    </div>
+                </dd>
+                <dt><span>Copy Book</span></dt>
+                <dd>
+                    <div *ngIf="loan.copyBookId">
+                        <a [routerLink]="['/copy-book', loan.copyBookId, 'view']">{{ loan.copyBookId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/loan', loan.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
