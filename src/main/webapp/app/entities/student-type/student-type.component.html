@@ -2,7 +2,8 @@
     <h2 id="page-heading">
         <span>Student Types</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-student-type" [routerLink]="['/student-type/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-student-type"
+                [routerLink]="['/student-type/new']">
             <fa-icon icon="plus"></fa-icon>
             <span>
             Create a new Student Type
@@ -21,48 +22,48 @@
     <div class="table-responsive" id="entities" *ngIf="studentTypes?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span>ID</span></th>
-                    <th scope="col" ><span>Student Type</span></th>
-                    <th scope="col" ><span>Number Of Days Loan</span></th>
-                    <th scope="col" ><span>Number Of Days Renewal</span></th>
-                    <th scope="col" ><span>Max Books On Loan</span></th>
-                    <th scope="col" ><span>Max Renewal Number</span></th>
-                    <th scope="col"></th>
-                </tr>
+            <tr>
+                <th scope="col"><span>ID</span></th>
+                <th scope="col"><span>Student Type</span></th>
+                <th scope="col"><span>Number Of Days Loan</span></th>
+                <th scope="col"><span>Number Of Days Renewal</span></th>
+                <th scope="col"><span>Max Books On Loan</span></th>
+                <th scope="col"><span>Max Renewal Number</span></th>
+                <th scope="col"></th>
+            </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let studentType of studentTypes ;trackBy: trackId">
-                    <td><a [routerLink]="['/student-type', studentType.id, 'view']">{{ studentType.id }}</a></td>
-                    <td>{{ studentType.studentType }}</td>
-                    <td>{{ studentType.numberOfDaysLoan }}</td>
-                    <td>{{ studentType.numberOfDaysRenewal }}</td>
-                    <td>{{ studentType.maxBooksOnLoan }}</td>
-                    <td>{{ studentType.maxRenewalNumber }}</td>
-                    <td class="text-right">
-                        <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/student-type', studentType.id, 'view']"
-                                    class="btn btn-info btn-sm">
-                                <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline">View</span>
-                            </button>
+            <tr *ngFor="let studentType of studentTypes ;trackBy: trackId">
+                <td><a [routerLink]="['/student-type', studentType.id, 'view']">{{ studentType.id }}</a></td>
+                <td>{{ studentType.studentType }}</td>
+                <td>{{ studentType.numberOfDaysLoan }}</td>
+                <td>{{ studentType.numberOfDaysRenewal }}</td>
+                <td>{{ studentType.maxBooksOnLoan }}</td>
+                <td>{{ studentType.maxRenewalNumber }}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/student-type', studentType.id, 'view']"
+                                class="btn btn-info btn-sm">
+                            <fa-icon icon="eye"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
 
-                            <button type="submit"
-                                    [routerLink]="['/student-type', studentType.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
-                                <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline">Edit</span>
-                            </button>
+                        <button type="submit"
+                                [routerLink]="['/student-type', studentType.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon icon="pencil-alt"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
 
-                            <button type="submit" (click)="delete(studentType)"
-                                    class="btn btn-danger btn-sm">
-                                <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline">Delete</span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+                        <button type="submit" (click)="delete(studentType)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon icon="times"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

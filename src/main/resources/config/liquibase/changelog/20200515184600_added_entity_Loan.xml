@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-        <property name="autoIncrement" value="true"/>
+    <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity Loan.
@@ -17,22 +17,22 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="loan_date" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="date_returned" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="date_to_be_returned" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="number_of_renewals" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="user_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_loan_user_id" />
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_loan_user_id"/>
             </column>
             <column name="copy_book_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_loan_copy_book_id" />
+                <constraints unique="true" nullable="true" uniqueConstraintName="ux_loan_copy_book_id"/>
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -53,9 +53,9 @@
     -->
     <changeSet id="20200515184600-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/loan.csv"
-                  separator=";"
-                  tableName="loan">
+            file="config/liquibase/fake-data/loan.csv"
+            separator=";"
+            tableName="loan">
             <column name="id" type="numeric"/>
             <column name="loan_date" type="date"/>
             <column name="date_returned" type="date"/>

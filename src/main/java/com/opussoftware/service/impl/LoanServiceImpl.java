@@ -1,13 +1,14 @@
 package com.opussoftware.service.impl;
 
-import com.opussoftware.service.LoanService;
 import com.opussoftware.domain.Loan;
 import com.opussoftware.repository.LoanRepository;
+import com.opussoftware.service.LibraryUserService;
+import com.opussoftware.service.LoanService;
 import com.opussoftware.service.dto.LoanDTO;
 import com.opussoftware.service.mapper.LoanMapper;
+import com.opussoftware.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,9 +30,22 @@ public class LoanServiceImpl implements LoanService {
 
     private final LoanMapper loanMapper;
 
-    public LoanServiceImpl(LoanRepository loanRepository, LoanMapper loanMapper) {
+    private final LibraryUserService libraryUserService;
+
+    public LoanServiceImpl(LoanRepository loanRepository, LoanMapper loanMapper, LibraryUserService libraryUserService) {
         this.loanRepository = loanRepository;
         this.loanMapper = loanMapper;
+        this.libraryUserService = libraryUserService;
+    }
+
+    /**
+     * Create a loan.
+     *
+     * @param loanDTO the entity to create.
+     */
+    public void create(LoanDTO loanDTO) {
+        libraryUserService.findOne(loanDTO.getUserId())
+            .orElseThrow(() -> new BadRequestAlertException("Library User not found", "loan", "usernotfound"));
     }
 
     /**
@@ -43,6 +57,7 @@ public class LoanServiceImpl implements LoanService {
     @Override
     public LoanDTO save(LoanDTO loanDTO) {
         log.debug("Request to save Loan : {}", loanDTO);
+
         Loan loan = loanMapper.toEntity(loanDTO);
         loan = loanRepository.save(loan);
         return loanMapper.toDto(loan);

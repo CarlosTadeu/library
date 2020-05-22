@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -43,9 +44,6 @@ public class LibraryUserResourceIT {
 
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_USERNAME = "AAAAAAAAAA";
-    private static final String UPDATED_USERNAME = "BBBBBBBBBB";
 
     private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
     private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
@@ -78,7 +76,7 @@ public class LibraryUserResourceIT {
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -87,16 +85,16 @@ public class LibraryUserResourceIT {
             .cpf(DEFAULT_CPF)
             .rg(DEFAULT_RG)
             .name(DEFAULT_NAME)
-            .username(DEFAULT_USERNAME)
             .address(DEFAULT_ADDRESS)
             .email(DEFAULT_EMAIL)
             .phoneNumber(DEFAULT_PHONE_NUMBER)
             .suspensionDate(DEFAULT_SUSPENSION_DATE);
         return libraryUser;
     }
+
     /**
      * Create an updated entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -105,7 +103,6 @@ public class LibraryUserResourceIT {
             .cpf(UPDATED_CPF)
             .rg(UPDATED_RG)
             .name(UPDATED_NAME)
-            .username(UPDATED_USERNAME)
             .address(UPDATED_ADDRESS)
             .email(UPDATED_EMAIL)
             .phoneNumber(UPDATED_PHONE_NUMBER)
@@ -137,7 +134,6 @@ public class LibraryUserResourceIT {
         assertThat(testLibraryUser.getCpf()).isEqualTo(DEFAULT_CPF);
         assertThat(testLibraryUser.getRg()).isEqualTo(DEFAULT_RG);
         assertThat(testLibraryUser.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testLibraryUser.getUsername()).isEqualTo(DEFAULT_USERNAME);
         assertThat(testLibraryUser.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testLibraryUser.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testLibraryUser.getPhoneNumber()).isEqualTo(DEFAULT_PHONE_NUMBER);
@@ -179,13 +175,12 @@ public class LibraryUserResourceIT {
             .andExpect(jsonPath("$.[*].cpf").value(hasItem(DEFAULT_CPF)))
             .andExpect(jsonPath("$.[*].rg").value(hasItem(DEFAULT_RG)))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].username").value(hasItem(DEFAULT_USERNAME)))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS)))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
             .andExpect(jsonPath("$.[*].phoneNumber").value(hasItem(DEFAULT_PHONE_NUMBER)))
             .andExpect(jsonPath("$.[*].suspensionDate").value(hasItem(DEFAULT_SUSPENSION_DATE.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getLibraryUser() throws Exception {
@@ -200,7 +195,6 @@ public class LibraryUserResourceIT {
             .andExpect(jsonPath("$.cpf").value(DEFAULT_CPF))
             .andExpect(jsonPath("$.rg").value(DEFAULT_RG))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.username").value(DEFAULT_USERNAME))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
             .andExpect(jsonPath("$.phoneNumber").value(DEFAULT_PHONE_NUMBER))
@@ -231,7 +225,6 @@ public class LibraryUserResourceIT {
             .cpf(UPDATED_CPF)
             .rg(UPDATED_RG)
             .name(UPDATED_NAME)
-            .username(UPDATED_USERNAME)
             .address(UPDATED_ADDRESS)
             .email(UPDATED_EMAIL)
             .phoneNumber(UPDATED_PHONE_NUMBER)
@@ -250,7 +243,6 @@ public class LibraryUserResourceIT {
         assertThat(testLibraryUser.getCpf()).isEqualTo(UPDATED_CPF);
         assertThat(testLibraryUser.getRg()).isEqualTo(UPDATED_RG);
         assertThat(testLibraryUser.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testLibraryUser.getUsername()).isEqualTo(UPDATED_USERNAME);
         assertThat(testLibraryUser.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testLibraryUser.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testLibraryUser.getPhoneNumber()).isEqualTo(UPDATED_PHONE_NUMBER);

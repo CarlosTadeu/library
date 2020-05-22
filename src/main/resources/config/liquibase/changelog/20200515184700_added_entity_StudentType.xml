@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-        <property name="autoIncrement" value="true"/>
+    <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity StudentType.
@@ -17,19 +17,19 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="student_type" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="number_of_days_loan" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="number_of_days_renewal" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="max_books_on_loan" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="max_renewal_number" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -50,9 +50,9 @@
     -->
     <changeSet id="20200515184700-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/student_type.csv"
-                  separator=";"
-                  tableName="student_type">
+            file="config/liquibase/fake-data/student_type.csv"
+            separator=";"
+            tableName="student_type">
             <column name="id" type="numeric"/>
             <column name="student_type" type="string"/>
             <column name="number_of_days_loan" type="numeric"/>

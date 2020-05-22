@@ -8,7 +8,7 @@ import java.util.Objects;
  * A DTO for the {@link com.opussoftware.domain.LibraryUser} entity.
  */
 public class LibraryUserDTO implements Serializable {
-    
+
     private Long id;
 
     private String cpf;
@@ -29,7 +29,7 @@ public class LibraryUserDTO implements Serializable {
 
 
     private Long studentTypeId;
-    
+
     public Long getId() {
         return id;
     }

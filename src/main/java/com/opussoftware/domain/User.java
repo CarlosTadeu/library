@@ -22,6 +22,7 @@ import java.util.Set;
 /**
  * A user.
  */
+
 @Entity
 @Table(name = "jhi_user")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)

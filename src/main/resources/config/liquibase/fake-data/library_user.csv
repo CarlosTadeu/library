@@ -1,11 +1,98 @@
-id;cpf;rg;name;username;address;email;phone_number;suspension_date
-1;Representative quantify Computers;Synchronised;circuit Ramp;Grocery SMS Yemen;Plastic port;Norberto.Hane85@yahoo.com;Nigeria Principal;2020-05-14
-2;Books systems parsing;web-enabled Checking Account Credit Card Account;Hills even-keeled West Virginia;hacking deposit;copy Rapid;Lavinia17@yahoo.com;Garden complexity;2020-05-15
-3;interface XML synthesize;Director Auto Loan Account transmitting;quantify Incredible Streamlined;Home Loan Account;Rustic Cotton Shirt Music Devolved;Esmeralda98@gmail.com;invoice cross-platform;2020-05-15
-4;ubiquitous digital;holistic primary;Checking Account Serbia;cross-platform array interface;Data Granite Vermont;Trenton4@yahoo.com;Generic modular online;2020-05-15
-5;Total;Intuitive reboot Tasty;HTTP synergies Clothing;Unbranded Concrete Bike compress;Tennessee;Jamey.Lehner@yahoo.com;cross-platform Global SMS;2020-05-15
-6;Cambridgeshire Computer;Specialist quantify New Mexico;Computers Expanded;redundant International;Architect Investment Account French Guiana;Ansel.Stracke98@yahoo.com;architectures;2020-05-15
-7;payment visionary;Unbranded Cotton Sausages transmitter Bermuda;hacking website Buckinghamshire;Uganda;time-frame Electronics;Juvenal_Leffler92@hotmail.com;grey Steel facilitate;2020-05-15
-8;deposit Soft lavender;array;success online;payment Shoes turquoise;calculate;Andreanne39@gmail.com;deposit;2020-05-15
-9;pricing structure Brunei Dollar transmit;system leverage Response;Paradigm;supply-chains;Granite Specialist quantify;Helga_Cole1@hotmail.com;Knolls program;2020-05-15
-10;virtual Practical;Future quantify forecast;Wooden architectures;deposit enterprise algorithm;United States Minor Outlying Islands process improvement Shoes;Josefina_Klein89@hotmail.com;Inverse;2020-05-14
+id;cpf;rg;name;address;email;phone_number;student_type_id
+1;43328145309;307785053;Fitzgerald Hayes;P.O. Box 602, 1780 Mauris St.;mauris.blandit@montesnasceturridiculus.com;(51) 9552-7028;3
+2;93651105607;980473248;Calista Tate;P.O. Box 250, 7457 Elementum Ave;accumsan@lacusQuisque.co.uk;(75) 3263-6273;3
+3;44408859658;436092165;Arden Brown;8362 Maecenas Road;Morbi@sed.org;(92) 6601-2718;2
+4;78962919486;135341887;Dorothy Kirby;629-7254 Vestibulum, Avenue;vitae.sodales.nisi@sit.edu;(86) 2999-3947;2
+5;35690304742;281368978;Nehru Bryan;Ap #853-105 Ligula. St.;Mauris.non@ornare.co.uk;(81) 1287-0675;4
+6;35332521378;551654413;Fletcher Simon;P.O. Box 738, 3969 In St.;Nullam.ut.nisi@adipiscinglacus.co.uk;(66) 1160-5032;1
+7;78175677471;650455423;Stone Harmon;P.O. Box 883, 5713 Vitae Rd.;non.bibendum@Nullaegetmetus.co.uk;(64) 5183-0917;4
+8;42639447655;190357092;Kennan Carson;P.O. Box 474, 2217 Magna St.;Fusce.diam@vestibulum.org;(18) 1046-1771;3
+9;95527671565;448969095;Sheila Olson;564-8904 Dui Rd.;luctus@turpisnonenim.co.uk;(81) 6456-9441;3
+10;71581393118;234150481;Megan Wooten;8412 Elit Rd.;Curabitur@dolor.edu;(97) 5363-6160;1
+11;28066238264;764108051;Damon Conley;701-6669 Mauris, St.;sit.amet@congueturpis.org;(26) 2421-7865;3
+12;43612937809;671897298;Flynn William;7877 Mus. Road;luctus@ligula.edu;(50) 5957-5909;2
+13;73752763108;315808108;Kenyon David;P.O. Box 924, 3112 Nibh Avenue;Praesent@velconvallisin.org;(69) 6479-5110;3
+14;25518943666;146855042;Vernon Mcfadden;4195 Suspendisse St.;tristique.ac.eleifend@atpretiumaliquet.net;(46) 1153-3596;2
+15;36864563713;958659267;Hu Carrillo;Ap #477-6884 Luctus St.;semper.rutrum.Fusce@consequatnec.edu;(69) 0490-1937;1
+16;76648636773;776217485;Xyla Pittman;851-8253 Sociosqu Av.;est@ipsumCurabitur.net;(60) 0426-5892;4
+17;95462388150;383509188;Irma Larsen;6875 Etiam Avenue;et.magna@acfeugiatnon.org;(27) 0655-2653;4
+18;98321264693;333401631;Fletcher Morrison;863-6062 Ac Rd.;Nulla@ultriciesligula.edu;(28) 8297-1264;1
+19;39902665622;481026409;Avram Pena;Ap #276-8366 Est, St.;facilisis@dictumaugue.ca;(11) 6247-9524;1
+20;23350366769;884439151;Christen Mcmahon;9773 Risus. Rd.;Integer.vitae@atrisusNunc.edu;(91) 4315-4661;1
+21;36863309372;554432120;Steel Wilkins;Ap #195-3236 In Street;ligula.Aenean.gravida@magna.ca;(44) 8448-4054;4
+22;37868033603;489671474;Steel Palmer;P.O. Box 626, 556 Non Ave;amet.ultricies.sem@augue.org;(20) 6726-5606;1
+23;17901743784;856520272;Leila Hendrix;P.O. Box 984, 9197 Fringilla St.;neque@lobortis.org;(77) 9461-8896;3
+24;33880825207;594803428;Holly Vinson;P.O. Box 257, 610 Nec Rd.;est.vitae.sodales@ipsumSuspendisse.net;(68) 5599-1332;1
+25;58941316787;486462977;Blaze Suarez;837-9021 Mauris Rd.;dictum.augue@Sedid.net;(91) 5674-0588;2
+26;47776777051;416270940;Ferdinand Mcdonald;474-7806 Sit Rd.;Aliquam.nisl.Nulla@ultricesVivamus.ca;(36) 5913-6142;2
+27;51469555699;432347863;Georgia Vinson;P.O. Box 729, 9159 Quam Rd.;Suspendisse.ac.metus@risusa.net;(82) 9680-4349;4
+28;40758409415;311720167;Brian Sexton;Ap #125-9100 Ante Rd.;ultrices.Vivamus@sempertellusid.edu;(69) 8681-4684;4
+29;57902907837;570459116;Autumn Cervantes;P.O. Box 267, 1671 Nec, Rd.;magnis.dis@Lorem.edu;(33) 9534-3717;3
+30;40502818066;735387204;Halla Goff;108-5669 Auctor, St.;lacus.vestibulum@quamCurabiturvel.com;(81) 8670-3963;4
+31;45346406768;927708917;Reuben Sandoval;Ap #252-3339 Tincidunt Rd.;orci@et.com;(46) 0493-4015;2
+32;73827939922;401217457;Burton Gray;Ap #243-6112 Id Rd.;consectetuer@purusDuis.ca;(80) 1662-3251;2
+33;41701944761;537939937;Lani Russo;236-5771 Dui. Avenue;dolor.sit@tortordictum.co.uk;(71) 3293-1052;3
+34;86316189785;288407904;Marsden Guerra;P.O. Box 851, 7021 Sapien St.;ligula.eu@Maurisquisturpis.org;(10) 6126-6235;4
+35;22512851248;767628742;Tyrone Keith;Ap #270-229 Facilisis, Rd.;sagittis@lacusUtnec.co.uk;(48) 1681-1638;4
+36;76250419947;821221513;Benedict Barr;154-2205 Duis Road;dolor.sit@Fuscefeugiat.net;(98) 6415-0522;4
+37;57311037155;156604804;April Peck;5037 Libero Avenue;enim.nisl.elementum@Donecvitae.edu;(42) 7245-0067;4
+38;60489897733;333940811;Solomon Justice;9509 Penatibus St.;montes@diamnuncullamcorper.ca;(24) 2119-7806;2
+39;18267387032;328934379;Cyrus Oneill;Ap #928-4543 Cras Rd.;nunc.sed@purusNullamscelerisque.edu;(38) 9102-2197;4
+40;32617671508;343886590;Veronica Mcpherson;7487 In Rd.;sed.tortor.Integer@id.edu;(20) 9442-6060;1
+41;59562386182;264861519;Fritz Snider;P.O. Box 603, 6883 Odio. Ave;cubilia@nibh.org;(14) 7495-8550;4
+42;50505269146;917324814;Kenyon Stevenson;P.O. Box 426, 2971 Accumsan St.;libero.et.tristique@Proin.edu;(18) 7978-3144;4
+43;14262714036;857360597;Chaim Larsen;9342 Magna. Ave;lorem@turpisAliquamadipiscing.ca;(72) 2955-3081;4
+44;46160877272;142474768;Darryl Molina;Ap #568-1708 Luctus Rd.;sed.sem@In.com;(88) 5361-2226;3
+45;36389920002;720657891;Finn Zimmerman;3095 Nunc. St.;aliquet@magnaDuis.com;(58) 9381-0990;2
+46;77278647680;305990929;Bo Carver;3771 Donec Road;rhoncus@Classaptenttaciti.co.uk;(99) 9033-1132;3
+47;87603592874;127807640;Claire Williams;2822 Cum Ave;Proin@infaucibus.net;(90) 0770-0109;3
+48;72941778165;924553709;Scott Bowen;P.O. Box 824, 9337 Vitae Rd.;lectus@Nam.org;(90) 9088-9738;2
+49;61125642738;735189666;Tatum Suarez;Ap #312-1393 Laoreet Street;Nullam@Namnulla.org;(67) 4439-7011;3
+50;31182917437;861260168;Vielka Sparks;825-2482 Imperdiet St.;Quisque.imperdiet.erat@loremvehicula.net;(74) 8084-4497;1
+51;91393905978;180065071;Zena Bray;8855 Maecenas Road;Nullam.enim@consequatpurusMaecenas.com;(83) 1048-8441;3
+52;48176183297;829352339;Myles Villarreal;907-3498 Sodales Avenue;fermentum.risus.at@enimcommodohendrerit.ca;(33) 5932-6246;4
+53;50951105199;516778422;Keely Delacruz;1983 Ac Av.;convallis@necante.org;(45) 9198-4255;1
+54;67342591679;588578681;Hamilton Moon;P.O. Box 119, 6181 Odio, Street;erat.volutpat@eleifendvitaeerat.com;(98) 3769-5565;3
+55;92089384125;345023520;Dexter Osborn;Ap #291-8063 Id Ave;Mauris@enim.org;(37) 4865-3480;2
+56;80260135625;482643132;Christopher Villarreal;P.O. Box 365, 9284 Risus Av.;ipsum@utaliquam.edu;(16) 7348-4325;4
+57;81270994839;468241144;Leroy Lawrence;P.O. Box 231, 3233 Sed Rd.;egestas@tristique.ca;(29) 3910-4108;3
+58;88659723063;829340129;Brenden Madden;P.O. Box 408, 2578 Lobortis Ave;facilisis.eget.ipsum@ametnulla.edu;(83) 7514-1989;2
+59;78789004895;607800476;Gwendolyn Shannon;331-7855 Vulputate Rd.;Nulla.eu.neque@odioNaminterdum.ca;(97) 7279-4594;3
+60;30248086858;947814275;Lamar Cummings;P.O. Box 617, 5698 Lorem, Av.;eu.eros@vulputatenisisem.net;(10) 8763-5234;3
+61;78573278949;896928159;Grady Harrison;2969 Risus. Av.;Aliquam@Etiambibendumfermentum.org;(34) 0769-8621;2
+62;44887500632;578315629;Jillian Blake;Ap #759-7126 Hendrerit Avenue;Vivamus.nibh.dolor@pretiumaliquet.com;(65) 7665-7187;1
+63;33410877841;354220492;Zephania Bailey;Ap #133-2840 Nisl St.;ut.lacus.Nulla@tristiquepellentesque.ca;(63) 6186-7289;1
+64;19970254697;632955363;Nigel Riggs;6585 Nunc Av.;Vestibulum.ante@variuset.ca;(53) 9917-2754;4
+65;75446025808;585062413;Lawrence Emerson;P.O. Box 470, 2413 Ullamcorper, Rd.;magna.a@vulputate.com;(44) 3442-7297;1
+66;47456126456;411112637;Tanner Brown;791-4595 Molestie St.;Aenean.eget@sitamet.net;(31) 9581-9190;4
+67;21756545755;102614168;Baker Burns;P.O. Box 747, 8426 Odio. Av.;nunc@lorem.ca;(80) 7456-7162;1
+68;53095178372;291113257;Kirestin Bates;P.O. Box 544, 9647 Nulla. Road;sed.consequat.auctor@blandit.org;(13) 8321-3235;2
+69;25741651810;236493734;Madaline Holman;Ap #986-251 Eu Road;est@venenatis.edu;(21) 9368-2674;1
+70;66091168395;577482731;Cleo Houston;286-9518 Non, Road;ridiculus@egestas.ca;(96) 4592-9918;4
+71;70594207335;265037220;Ivor Jarvis;813 Quis Street;sit@cursusaenim.edu;(97) 9289-5962;3
+72;58122312830;733730121;Jaquelyn Ramirez;7033 Ante Avenue;augue.eu@necurna.net;(63) 6876-9026;4
+73;80151236619;602205738;Willow Walker;P.O. Box 854, 7544 Erat. Av.;Integer.id.magna@magnaaneque.edu;(39) 1466-8874;1
+74;70587673021;799657713;Yolanda Cole;P.O. Box 146, 4099 Massa. Av.;tincidunt.orci.quis@massaQuisqueporttitor.com;(34) 3620-0124;3
+75;34901136659;119162968;Rana Stafford;6940 Dolor Street;magna@idsapien.org;(77) 6222-1457;2
+76;71082607443;256458307;Sydney Calhoun;P.O. Box 376, 6322 Mauris Ave;habitant.morbi.tristique@lacusEtiam.edu;(92) 8855-6965;1
+77;70093034649;384454505;Garrison Craft;990-3390 Et, Rd.;Integer.eu@euduiCum.com;(25) 6552-7993;3
+78;44339658760;628179611;Odette Thomas;881-9987 Imperdiet Avenue;lobortis@Suspendisse.ca;(52) 9745-3818;2
+79;16041443873;680599923;Madeson Griffith;187-9602 Suscipit Avenue;justo@aliquamenimnec.org;(79) 5093-1587;3
+80;11817269577;715868760;Wendy Fowler;4553 Est Av.;non.egestas.a@purusaccumsan.ca;(28) 0152-3597;3
+81;15213167101;972256431;Christen Mccray;P.O. Box 217, 5633 Ligula. Street;dictum.cursus.Nunc@volutpat.co.uk;(48) 5291-5534;2
+82;90943287225;340544409;Jada Erickson;468-605 Urna Street;non.cursus@diamnunc.edu;(55) 6485-9699;3
+83;46847012102;693276335;Tallulah Spears;P.O. Box 397, 6693 Faucibus Avenue;sit.amet@Aliquamauctorvelit.edu;(48) 6045-8823;3
+84;57161055510;594018322;Marvin Powell;159 Nulla Ave;posuere@Donecfringilla.ca;(48) 1285-6259;3
+85;10772936162;871389598;Chancellor Larson;830-578 Turpis St.;velit.eget.laoreet@at.edu;(71) 9321-6811;1
+86;19880261511;332956198;Xavier Harper;232 Aliquam Ave;orci@ametdapibus.ca;(79) 1918-2804;2
+87;65490386493;717887716;Cecilia Lambert;3050 Enim. St.;ut.lacus@diamluctus.edu;(62) 1972-8499;2
+88;55110127309;990179509;Noelle Haynes;Ap #730-6865 Arcu. Av.;mollis.lectus.pede@pellentesqueafacilisis.com;(83) 9417-8400;2
+89;47581526078;390351837;Dean Osborne;Ap #364-8405 Elit Rd.;nunc.interdum@consectetueradipiscingelit.org;(80) 0687-7637;2
+90;23650246282;452634232;Allen Fitzgerald;923-4880 Rutrum Street;vitae@vitaepurusgravida.edu;(47) 3535-3205;3
+91;76690371227;592998146;Dawn Williamson;P.O. Box 236, 8737 Morbi Rd.;vestibulum@risus.co.uk;(83) 4745-7664;4
+92;70119654101;152175615;Henry Salas;P.O. Box 252, 6556 Nunc St.;fringilla@Nunc.edu;(90) 4999-8083;4
+93;57602607877;528846915;Courtney Kent;5334 Sit Street;orci@Nuncullamcorper.edu;(89) 9309-6940;4
+94;51599193597;290761536;Xander Bonner;638-7174 Nascetur Street;Ut.semper.pretium@loremtristique.org;(52) 7284-1447;3
+95;68756008918;928339224;Destiny Lara;P.O. Box 138, 5645 Donec Road;sit.amet@rutrum.com;(44) 9032-4926;4
+96;78485417671;315442465;Zoe Walsh;699-2345 Et, Street;odio.sagittis.semper@Etiambibendumfermentum.net;(13) 8163-0309;2
+97;29804531950;274959137;Sopoline Mitchell;427-9086 Nec Av.;Nulla@Nulla.org;(37) 1384-0041;1

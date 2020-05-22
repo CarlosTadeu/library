@@ -16,7 +16,7 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "books")
+@Table(name = "book")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Book implements Serializable {
 
@@ -44,16 +44,16 @@ public class Book implements Serializable {
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "book_subject",
-               joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "subject_id", referencedColumnName = "id"))
+    @JoinTable(name = "book_subjects",
+        joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "subjects_id", referencedColumnName = "id"))
     private Set<Subject> subjects = new HashSet<>();
 
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "book_author",
-               joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"))
+    @JoinTable(name = "book_authors",
+        joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "authors_id", referencedColumnName = "id"))
     private Set<Author> authors = new HashSet<>();
 
     public Book isbn(String isbn) {
@@ -126,7 +126,4 @@ public class Book implements Serializable {
         author.getBooks().remove(this);
         return this;
     }
-
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
-
 }

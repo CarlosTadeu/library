@@ -7,7 +7,7 @@
         Added the constraints for entity Book.
     -->
     <changeSet id="20200515184400-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="book_id"
                                  baseTableName="book_subjects"
                                  constraintName="fk_book_subjects_book_id"
@@ -19,7 +19,7 @@
                                  constraintName="fk_book_subjects_subjects_id"
                                  referencedColumnNames="id"
                                  referencedTableName="subject"/>
-        
+
         <addForeignKeyConstraint baseColumnNames="book_id"
                                  baseTableName="book_authors"
                                  constraintName="fk_book_authors_book_id"
@@ -31,6 +31,6 @@
                                  constraintName="fk_book_authors_authors_id"
                                  referencedColumnNames="id"
                                  referencedTableName="author"/>
-        
+
     </changeSet>
 </databaseChangeLog>

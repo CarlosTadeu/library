@@ -21,6 +21,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +78,7 @@ public class BookResourceIT {
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -89,9 +90,10 @@ public class BookResourceIT {
             .publicationYear(DEFAULT_PUBLICATION_YEAR);
         return book;
     }
+
     /**
      * Create an updated entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -168,7 +170,7 @@ public class BookResourceIT {
             .andExpect(jsonPath("$.[*].publisher").value(hasItem(DEFAULT_PUBLISHER)))
             .andExpect(jsonPath("$.[*].publicationYear").value(hasItem(DEFAULT_PUBLICATION_YEAR)));
     }
-    
+
     @SuppressWarnings({"unchecked"})
     public void getAllBooksWithEagerRelationshipsIsEnabled() throws Exception {
         when(bookServiceMock.findAllWithEagerRelationships(any())).thenReturn(new PageImpl(new ArrayList<>()));

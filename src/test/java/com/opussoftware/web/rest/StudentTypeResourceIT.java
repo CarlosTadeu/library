@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -67,7 +68,7 @@ public class StudentTypeResourceIT {
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -80,9 +81,10 @@ public class StudentTypeResourceIT {
             .maxRenewalNumber(DEFAULT_MAX_RENEWAL_NUMBER);
         return studentType;
     }
+
     /**
      * Create an updated entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -162,7 +164,7 @@ public class StudentTypeResourceIT {
             .andExpect(jsonPath("$.[*].maxBooksOnLoan").value(hasItem(DEFAULT_MAX_BOOKS_ON_LOAN)))
             .andExpect(jsonPath("$.[*].maxRenewalNumber").value(hasItem(DEFAULT_MAX_RENEWAL_NUMBER)));
     }
-    
+
     @Test
     @Transactional
     public void getStudentType() throws Exception {

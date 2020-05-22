@@ -13,7 +13,6 @@ import org.mapstruct.*;
 public interface StudentTypeMapper extends EntityMapper<StudentTypeDTO, StudentType> {
 
 
-
     default StudentType fromId(Long id) {
         if (id == null) {
             return null;

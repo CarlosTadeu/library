@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 @Data
 @Entity
-@Table(name = "copy_books")
+@Table(name = "copy_book")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class CopyBook implements Serializable {
 
@@ -29,7 +29,7 @@ public class CopyBook implements Serializable {
     private Boolean available;
 
     @ManyToOne
-    @JsonIgnoreProperties("copyBooks")
+    @JsonIgnoreProperties("copyBook")
     private Book book;
 
     public Boolean isAvailable() {

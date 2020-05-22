@@ -39,7 +39,7 @@ export const studentTypeRoute: Routes = [
     path: '',
     component: StudentTypeComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'StudentTypes'
     },
     canActivate: [UserRouteAccessService]
@@ -51,7 +51,7 @@ export const studentTypeRoute: Routes = [
       studentType: StudentTypeResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'StudentTypes'
     },
     canActivate: [UserRouteAccessService]
@@ -63,7 +63,7 @@ export const studentTypeRoute: Routes = [
       studentType: StudentTypeResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'StudentTypes'
     },
     canActivate: [UserRouteAccessService]
@@ -75,7 +75,7 @@ export const studentTypeRoute: Routes = [
       studentType: StudentTypeResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'StudentTypes'
     },
     canActivate: [UserRouteAccessService]

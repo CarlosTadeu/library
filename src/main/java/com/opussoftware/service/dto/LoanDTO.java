@@ -8,7 +8,7 @@ import java.util.Objects;
  * A DTO for the {@link com.opussoftware.domain.Loan} entity.
  */
 public class LoanDTO implements Serializable {
-    
+
     private Long id;
 
     private LocalDate loanDate;
@@ -23,7 +23,7 @@ public class LoanDTO implements Serializable {
     private Long userId;
 
     private Long copyBookId;
-    
+
     public Long getId() {
         return id;
     }

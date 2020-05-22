@@ -7,7 +7,7 @@ import java.util.Objects;
  * A DTO for the {@link com.opussoftware.domain.StudentType} entity.
  */
 public class StudentTypeDTO implements Serializable {
-    
+
     private Long id;
 
     private String studentType;
@@ -20,7 +20,7 @@ public class StudentTypeDTO implements Serializable {
 
     private Integer maxRenewalNumber;
 
-    
+
     public Long getId() {
         return id;
     }

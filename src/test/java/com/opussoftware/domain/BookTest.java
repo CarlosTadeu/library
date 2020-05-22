@@ -1,7 +1,9 @@
 package com.opussoftware.domain;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
 import com.opussoftware.web.rest.TestUtil;
 
 public class BookTest {

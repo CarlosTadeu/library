@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-        <property name="autoIncrement" value="true"/>
+    <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity CopyBook.
@@ -17,10 +17,10 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="available" type="boolean">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="book_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -41,9 +41,9 @@
     -->
     <changeSet id="20200515184500-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/copy_book.csv"
-                  separator=";"
-                  tableName="copy_book">
+            file="config/liquibase/fake-data/copy_book.csv"
+            separator=";"
+            tableName="copy_book">
             <column name="id" type="numeric"/>
             <column name="available" type="boolean"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here, do not remove-->

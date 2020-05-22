@@ -39,7 +39,7 @@ export const loanRoute: Routes = [
     path: '',
     component: LoanComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Loans'
     },
     canActivate: [UserRouteAccessService]
@@ -51,7 +51,7 @@ export const loanRoute: Routes = [
       loan: LoanResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Loans'
     },
     canActivate: [UserRouteAccessService]
@@ -63,7 +63,7 @@ export const loanRoute: Routes = [
       loan: LoanResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Loans'
     },
     canActivate: [UserRouteAccessService]
@@ -75,7 +75,7 @@ export const loanRoute: Routes = [
       loan: LoanResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Loans'
     },
     canActivate: [UserRouteAccessService]

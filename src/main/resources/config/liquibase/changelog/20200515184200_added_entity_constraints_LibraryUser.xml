@@ -7,7 +7,7 @@
         Added the constraints for entity LibraryUser.
     -->
     <changeSet id="20200515184200-2" author="jhipster">
-        
+
         <addForeignKeyConstraint baseColumnNames="student_type_id"
                                  baseTableName="library_user"
                                  constraintName="fk_library_user_student_type_id"

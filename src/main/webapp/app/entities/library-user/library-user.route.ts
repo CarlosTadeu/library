@@ -43,7 +43,7 @@ export const libraryUserRoute: Routes = [
       pagingParams: JhiResolvePagingParams
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       defaultSort: 'id,asc',
       pageTitle: 'LibraryUsers'
     },
@@ -56,7 +56,7 @@ export const libraryUserRoute: Routes = [
       libraryUser: LibraryUserResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'LibraryUsers'
     },
     canActivate: [UserRouteAccessService]
@@ -68,7 +68,7 @@ export const libraryUserRoute: Routes = [
       libraryUser: LibraryUserResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'LibraryUsers'
     },
     canActivate: [UserRouteAccessService]
@@ -80,7 +80,7 @@ export const libraryUserRoute: Routes = [
       libraryUser: LibraryUserResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'LibraryUsers'
     },
     canActivate: [UserRouteAccessService]

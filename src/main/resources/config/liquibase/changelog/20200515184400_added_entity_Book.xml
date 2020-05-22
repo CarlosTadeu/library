@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-        <property name="autoIncrement" value="true"/>
+    <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity Book.
@@ -17,16 +17,16 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="isbn" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="title" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="publisher" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="publication_year" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -44,7 +44,7 @@
         </createTable>
 
         <addPrimaryKey columnNames="book_id, subjects_id" tableName="book_subjects"/>
-        
+
         <createTable tableName="book_authors">
             <column name="authors_id" type="bigint">
                 <constraints nullable="false"/>
@@ -55,7 +55,7 @@
         </createTable>
 
         <addPrimaryKey columnNames="book_id, authors_id" tableName="book_authors"/>
-        
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 
@@ -69,9 +69,9 @@
     -->
     <changeSet id="20200515184400-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/book.csv"
-                  separator=";"
-                  tableName="book">
+            file="config/liquibase/fake-data/book.csv"
+            separator=";"
+            tableName="book">
             <column name="id" type="numeric"/>
             <column name="isbn" type="string"/>
             <column name="title" type="string"/>

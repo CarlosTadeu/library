@@ -1,6 +1,7 @@
 package com.opussoftware.web.rest.vm;
 
 import com.opussoftware.service.dto.UserDTO;
+
 import javax.validation.constraints.Size;
 
 /**

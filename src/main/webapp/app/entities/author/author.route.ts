@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router';
-import { Observable, of, EMPTY } from 'rxjs';
+import { ActivatedRouteSnapshot, Resolve, Router, Routes } from '@angular/router';
+import { EMPTY, Observable, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
 import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { IAuthor, Author } from 'app/shared/model/author.model';
+import { Author, IAuthor } from 'app/shared/model/author.model';
 import { AuthorService } from './author.service';
 import { AuthorComponent } from './author.component';
 import { AuthorDetailComponent } from './author-detail.component';
@@ -39,7 +39,7 @@ export const authorRoute: Routes = [
     path: '',
     component: AuthorComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Authors'
     },
     canActivate: [UserRouteAccessService]
@@ -51,7 +51,7 @@ export const authorRoute: Routes = [
       author: AuthorResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Authors'
     },
     canActivate: [UserRouteAccessService]
@@ -63,7 +63,7 @@ export const authorRoute: Routes = [
       author: AuthorResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Authors'
     },
     canActivate: [UserRouteAccessService]
@@ -75,7 +75,7 @@ export const authorRoute: Routes = [
       author: AuthorResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Authors'
     },
     canActivate: [UserRouteAccessService]

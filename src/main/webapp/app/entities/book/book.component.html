@@ -2,7 +2,8 @@
     <h2 id="page-heading">
         <span>Books</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-book" [routerLink]="['/book/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-book"
+                [routerLink]="['/book/new']">
             <fa-icon icon="plus"></fa-icon>
             <span>
             Create a new Book
@@ -21,58 +22,60 @@
     <div class="table-responsive" id="entities" *ngIf="books?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr>
-                    <th scope="col" ><span>ID</span></th>
-                    <th scope="col" ><span>Isbn</span></th>
-                    <th scope="col" ><span>Title</span></th>
-                    <th scope="col" ><span>Publisher</span></th>
-                    <th scope="col" ><span>Publication Year</span></th>
-                    <th scope="col" ><span>Subjects</span></th>
-                    <th scope="col" ><span>Authors</span></th>
-                    <th scope="col"></th>
-                </tr>
+            <tr>
+                <th scope="col"><span>ID</span></th>
+                <th scope="col"><span>Isbn</span></th>
+                <th scope="col"><span>Title</span></th>
+                <th scope="col"><span>Publisher</span></th>
+                <th scope="col"><span>Publication Year</span></th>
+                <th scope="col"><span>Subjects</span></th>
+                <th scope="col"><span>Authors</span></th>
+                <th scope="col"></th>
+            </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let book of books ;trackBy: trackId">
-                    <td><a [routerLink]="['/book', book.id, 'view']">{{ book.id }}</a></td>
-                    <td>{{ book.isbn }}</td>
-                    <td>{{ book.title }}</td>
-                    <td>{{ book.publisher }}</td>
-                    <td>{{ book.publicationYear }}</td>
-                    <td>
+            <tr *ngFor="let book of books ;trackBy: trackId">
+                <td><a [routerLink]="['/book', book.id, 'view']">{{ book.id }}</a></td>
+                <td>{{ book.isbn }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.publisher }}</td>
+                <td>{{ book.publicationYear }}</td>
+                <td>
                         <span *ngFor="let subjects of book.subjects; let last = last">
-                            <a class="form-control-static" [routerLink]="['/subject', subjects?.id, 'view']">{{ subjects.id }}</a>{{ last ? '' : ', ' }}
+                            <a class="form-control-static"
+                               [routerLink]="['/subject', subjects?.id, 'view']">{{ subjects.id }}</a>{{ last ? '' : ', ' }}
                         </span>
-                    </td>
-                    <td>
+                </td>
+                <td>
                         <span *ngFor="let authors of book.authors; let last = last">
-                            <a class="form-control-static" [routerLink]="['/author', authors?.id, 'view']">{{ authors.id }}</a>{{ last ? '' : ', ' }}
+                            <a class="form-control-static"
+                               [routerLink]="['/author', authors?.id, 'view']">{{ authors.id }}</a>{{ last ? '' : ', ' }}
                         </span>
-                    </td>
-                    <td class="text-right">
-                        <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/book', book.id, 'view']"
-                                    class="btn btn-info btn-sm">
-                                <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline">View</span>
-                            </button>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/book', book.id, 'view']"
+                                class="btn btn-info btn-sm">
+                            <fa-icon icon="eye"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
 
-                            <button type="submit"
-                                    [routerLink]="['/book', book.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
-                                <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline">Edit</span>
-                            </button>
+                        <button type="submit"
+                                [routerLink]="['/book', book.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon icon="pencil-alt"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
 
-                            <button type="submit" (click)="delete(book)"
-                                    class="btn btn-danger btn-sm">
-                                <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline">Delete</span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+                        <button type="submit" (click)="delete(book)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon icon="times"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

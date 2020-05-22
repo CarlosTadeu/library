@@ -7,14 +7,14 @@ import java.util.Objects;
  * A DTO for the {@link com.opussoftware.domain.CopyBook} entity.
  */
 public class CopyBookDTO implements Serializable {
-    
+
     private Long id;
 
     private Boolean available;
 
 
     private Long bookId;
-    
+
     public Long getId() {
         return id;
     }

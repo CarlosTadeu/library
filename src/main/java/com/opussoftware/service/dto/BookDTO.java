@@ -9,7 +9,7 @@ import java.util.Objects;
  * A DTO for the {@link com.opussoftware.domain.Book} entity.
  */
 public class BookDTO implements Serializable {
-    
+
     private Long id;
 
     private String isbn;
@@ -22,7 +22,7 @@ public class BookDTO implements Serializable {
 
     private Set<SubjectDTO> subjects = new HashSet<>();
     private Set<AuthorDTO> authors = new HashSet<>();
-    
+
     public Long getId() {
         return id;
     }

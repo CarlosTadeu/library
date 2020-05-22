@@ -18,12 +18,12 @@ class ArchTest {
 
         noClasses()
             .that()
-                .resideInAnyPackage("com.opussoftware.service..")
+            .resideInAnyPackage("com.opussoftware.service..")
             .or()
-                .resideInAnyPackage("com.opussoftware.repository..")
+            .resideInAnyPackage("com.opussoftware.repository..")
             .should().dependOnClassesThat()
-                .resideInAnyPackage("..com.opussoftware.web..")
-        .because("Services and repositories should not depend on web layer")
-        .check(importedClasses);
+            .resideInAnyPackage("..com.opussoftware.web..")
+            .because("Services and repositories should not depend on web layer")
+            .check(importedClasses);
     }
 }

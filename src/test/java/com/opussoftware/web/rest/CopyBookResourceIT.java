@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class CopyBookResourceIT {
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -64,9 +65,10 @@ public class CopyBookResourceIT {
             .available(DEFAULT_AVAILABLE);
         return copyBook;
     }
+
     /**
      * Create an updated entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -134,7 +136,7 @@ public class CopyBookResourceIT {
             .andExpect(jsonPath("$.[*].id").value(hasItem(copyBook.getId().intValue())))
             .andExpect(jsonPath("$.[*].available").value(hasItem(DEFAULT_AVAILABLE.booleanValue())));
     }
-    
+
     @Test
     @Transactional
     public void getCopyBook() throws Exception {

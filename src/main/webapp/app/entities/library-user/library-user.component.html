@@ -2,7 +2,8 @@
     <h2 id="page-heading">
         <span>Library Users</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-library-user" [routerLink]="['/library-user/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-library-user"
+                [routerLink]="['/library-user/new']">
             <fa-icon icon="plus"></fa-icon>
             <span>
             Create a new Library User
@@ -21,60 +22,76 @@
     <div class="table-responsive" id="entities" *ngIf="libraryUsers?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="cpf"><span>Cpf</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="rg"><span>Rg</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="name"><span>Name</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="username"><span>Username</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="address"><span>Address</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="email"><span>Email</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="phoneNumber"><span>Phone Number</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="suspensionDate"><span>Suspension Date</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="studentTypeId"><span>Student Type</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"></th>
-                </tr>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                <th scope="col" jhiSortBy="id"><span>ID</span>
+                    <fa-icon icon="sort"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="cpf"><span>Cpf</span>
+                    <fa-icon icon="sort"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="rg"><span>Rg</span>
+                    <fa-icon icon="sort"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="name"><span>Name</span>
+                    <fa-icon icon="sort"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="address"><span>Address</span>
+                    <fa-icon icon="sort"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="email"><span>Email</span>
+                    <fa-icon icon="sort"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="phoneNumber"><span>Phone Number</span>
+                    <fa-icon icon="sort"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="suspensionDate"><span>Suspension Date</span>
+                    <fa-icon icon="sort"></fa-icon>
+                </th>
+                <th scope="col" jhiSortBy="studentTypeId"><span>Student Type</span>
+                    <fa-icon icon="sort"></fa-icon>
+                </th>
+                <th scope="col"></th>
+            </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let libraryUser of libraryUsers ;trackBy: trackId">
-                    <td><a [routerLink]="['/library-user', libraryUser.id, 'view']">{{ libraryUser.id }}</a></td>
-                    <td>{{ libraryUser.cpf }}</td>
-                    <td>{{ libraryUser.rg }}</td>
-                    <td>{{ libraryUser.name }}</td>
-                    <td>{{ libraryUser.username }}</td>
-                    <td>{{ libraryUser.address }}</td>
-                    <td>{{ libraryUser.email }}</td>
-                    <td>{{ libraryUser.phoneNumber }}</td>
-                    <td>{{ libraryUser.suspensionDate | date:'mediumDate' }}</td>
-                    <td>
-                        <div *ngIf="libraryUser.studentTypeId">
-                            <a [routerLink]="['/student-type', libraryUser.studentTypeId , 'view']" >{{ libraryUser.studentTypeId }}</a>
-                        </div>
-                    </td>
-                    <td class="text-right">
-                        <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/library-user', libraryUser.id, 'view']"
-                                    class="btn btn-info btn-sm">
-                                <fa-icon icon="eye"></fa-icon>
-                                <span class="d-none d-md-inline">View</span>
-                            </button>
+            <tr *ngFor="let libraryUser of libraryUsers ;trackBy: trackId">
+                <td><a [routerLink]="['/library-user', libraryUser.id, 'view']">{{ libraryUser.id }}</a></td>
+                <td>{{ libraryUser.cpf }}</td>
+                <td>{{ libraryUser.rg }}</td>
+                <td>{{ libraryUser.name }}</td>
+                <td>{{ libraryUser.address }}</td>
+                <td>{{ libraryUser.email }}</td>
+                <td>{{ libraryUser.phoneNumber }}</td>
+                <td>{{ libraryUser.suspensionDate | date:'mediumDate' }}</td>
+                <td>
+                    <div *ngIf="libraryUser.studentTypeId">
+                        <a [routerLink]="['/student-type', libraryUser.studentTypeId , 'view']">{{ libraryUser.studentTypeId }}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/library-user', libraryUser.id, 'view']"
+                                class="btn btn-info btn-sm">
+                            <fa-icon icon="eye"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
 
-                            <button type="submit"
-                                    [routerLink]="['/library-user', libraryUser.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
-                                <fa-icon icon="pencil-alt"></fa-icon>
-                                <span class="d-none d-md-inline">Edit</span>
-                            </button>
+                        <button type="submit"
+                                [routerLink]="['/library-user', libraryUser.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon icon="pencil-alt"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
 
-                            <button type="submit" (click)="delete(libraryUser)"
-                                    class="btn btn-danger btn-sm">
-                                <fa-icon icon="times"></fa-icon>
-                                <span class="d-none d-md-inline">Delete</span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+                        <button type="submit" (click)="delete(libraryUser)"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon icon="times"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -85,7 +102,9 @@
         </div>
 
         <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage"
+                            [maxSize]="5" [rotate]="true" [boundaryLinks]="true"
+                            (pageChange)="loadPage($event)"></ngb-pagination>
         </div>
     </div>
 </div>

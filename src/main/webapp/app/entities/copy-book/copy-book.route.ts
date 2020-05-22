@@ -39,7 +39,7 @@ export const copyBookRoute: Routes = [
     path: '',
     component: CopyBookComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'CopyBooks'
     },
     canActivate: [UserRouteAccessService]
@@ -51,7 +51,7 @@ export const copyBookRoute: Routes = [
       copyBook: CopyBookResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'CopyBooks'
     },
     canActivate: [UserRouteAccessService]
@@ -63,7 +63,7 @@ export const copyBookRoute: Routes = [
       copyBook: CopyBookResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'CopyBooks'
     },
     canActivate: [UserRouteAccessService]
@@ -75,7 +75,7 @@ export const copyBookRoute: Routes = [
       copyBook: CopyBookResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'CopyBooks'
     },
     canActivate: [UserRouteAccessService]

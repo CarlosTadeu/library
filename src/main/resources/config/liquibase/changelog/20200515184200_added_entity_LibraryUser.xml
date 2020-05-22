@@ -6,7 +6,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-        <property name="autoIncrement" value="true"/>
+    <property name="autoIncrement" value="true"/>
 
     <!--
         Added the entity LibraryUser.
@@ -17,31 +17,28 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="cpf" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="rg" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="username" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="address" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="email" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="phone_number" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="suspension_date" type="date">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="student_type_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
@@ -62,9 +59,9 @@
     -->
     <changeSet id="20200515184200-1-data" author="jhipster" context="faker">
         <loadData
-                  file="config/liquibase/fake-data/library_user.csv"
-                  separator=";"
-                  tableName="library_user">
+            file="config/liquibase/fake-data/library_user.csv"
+            separator=";"
+            tableName="library_user">
             <column name="id" type="numeric"/>
             <column name="cpf" type="string"/>
             <column name="rg" type="string"/>

@@ -13,7 +13,7 @@ const commonConfig = require('./webpack.common.js');
 
 const ENV = 'development';
 
-module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
+module.exports = (options) => webpackMerge(commonConfig({env: ENV}), {
     devtool: 'eval-source-map',
     devServer: {
         contentBase: './target/classes/static/',
@@ -54,21 +54,21 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
             loader: 'eslint-loader',
             exclude: /node_modules/
         },
-        {
-            test: /\.scss$/,
-            use: ['to-string-loader', 'css-loader', 'postcss-loader', {
-                loader: 'sass-loader',
-                options: { implementation: sass }
-            }],
-            exclude: /(vendor\.scss|global\.scss)/
-        },
-        {
-            test: /(vendor\.scss|global\.scss)/,
-            use: ['style-loader', 'css-loader', 'postcss-loader', {
-                loader: 'sass-loader',
-                options: { implementation: sass }
+            {
+                test: /\.scss$/,
+                use: ['to-string-loader', 'css-loader', 'postcss-loader', {
+                    loader: 'sass-loader',
+                    options: {implementation: sass}
+                }],
+                exclude: /(vendor\.scss|global\.scss)/
+            },
+            {
+                test: /(vendor\.scss|global\.scss)/,
+                use: ['style-loader', 'css-loader', 'postcss-loader', {
+                    loader: 'sass-loader',
+                    options: {implementation: sass}
+                }]
             }]
-        }]
     },
     stats: process.env.JHI_DISABLE_WEBPACK_LOGS ? 'none' : options.stats,
     plugins: [
@@ -76,7 +76,7 @@ module.exports = (options) => webpackMerge(commonConfig({ env: ENV }), {
             ? null
             : new SimpleProgressWebpackPlugin({
                 format: options.stats === 'minimal' ? 'compact' : 'expanded'
-              }),
+            }),
         new FriendlyErrorsWebpackPlugin(),
         new BrowserSyncPlugin({
             https: options.tls,

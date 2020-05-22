@@ -19,7 +19,7 @@ module.exports = {
     moduleNameMapper: mapTypescriptAliasToJestAlias(),
     reporters: [
         'default',
-        [ 'jest-junit', { outputDirectory: './target/test-results/', outputName: 'TESTS-results-jest.xml' } ]
+        ['jest-junit', {outputDirectory: './target/test-results/', outputName: 'TESTS-results-jest.xml'}]
     ],
     testResultsProcessor: 'jest-sonar-reporter',
     transformIgnorePatterns: ['node_modules/'],
@@ -29,7 +29,7 @@ module.exports = {
 };
 
 function mapTypescriptAliasToJestAlias(alias = {}) {
-    const jestAliases = { ...alias };
+    const jestAliases = {...alias};
     if (!tsconfig.compilerOptions.paths) {
         return jestAliases;
     }

@@ -39,7 +39,7 @@ export const bookRoute: Routes = [
     path: '',
     component: BookComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Books'
     },
     canActivate: [UserRouteAccessService]
@@ -51,7 +51,7 @@ export const bookRoute: Routes = [
       book: BookResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Books'
     },
     canActivate: [UserRouteAccessService]
@@ -63,7 +63,7 @@ export const bookRoute: Routes = [
       book: BookResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Books'
     },
     canActivate: [UserRouteAccessService]
@@ -75,7 +75,7 @@ export const bookRoute: Routes = [
       book: BookResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Books'
     },
     canActivate: [UserRouteAccessService]

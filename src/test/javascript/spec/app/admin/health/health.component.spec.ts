@@ -53,7 +53,14 @@ describe('Component Tests', () => {
       it('should handle a 503 on refreshing health data', () => {
         // GIVEN
         const health: Health = { status: 'DOWN', components: { mail: { status: 'DOWN', details: 'mailDetails' } } };
-        spyOn(service, 'checkHealth').and.returnValue(throwError(new HttpErrorResponse({ status: 503, error: health })));
+        spyOn(service, 'checkHealth').and.returnValue(
+          throwError(
+            new HttpErrorResponse({
+              status: 503,
+              error: health
+            })
+          )
+        );
 
         // WHEN
         comp.refresh();

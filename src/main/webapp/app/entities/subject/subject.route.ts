@@ -39,7 +39,7 @@ export const subjectRoute: Routes = [
     path: '',
     component: SubjectComponent,
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Subjects'
     },
     canActivate: [UserRouteAccessService]
@@ -51,7 +51,7 @@ export const subjectRoute: Routes = [
       subject: SubjectResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Subjects'
     },
     canActivate: [UserRouteAccessService]
@@ -63,7 +63,7 @@ export const subjectRoute: Routes = [
       subject: SubjectResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Subjects'
     },
     canActivate: [UserRouteAccessService]
@@ -75,7 +75,7 @@ export const subjectRoute: Routes = [
       subject: SubjectResolve
     },
     data: {
-      authorities: [Authority.USER],
+      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
       pageTitle: 'Subjects'
     },
     canActivate: [UserRouteAccessService]

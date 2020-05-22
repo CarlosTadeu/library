@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
+const {BaseHrefWebpackPlugin} = require('base-href-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
@@ -10,7 +10,7 @@ module.exports = (options) => ({
     resolve: {
         extensions: ['.ts', '.js'],
         modules: ['node_modules'],
-        mainFields: [ 'es2015', 'browser', 'module', 'main'],
+        mainFields: ['es2015', 'browser', 'module', 'main'],
         alias: utils.mapTypescriptAliasToWebpackAlias()
     },
     stats: {
@@ -28,9 +28,9 @@ module.exports = (options) => ({
                 options: {
                     minimize: true,
                     caseSensitive: true,
-                    removeAttributeQuotes:false,
-                    minifyJS:false,
-                    minifyCSS:false
+                    removeAttributeQuotes: false,
+                    minifyJS: false,
+                    minifyCSS: false
                 },
                 exclude: /(src\/main\/webapp\/index.html)/
             },
@@ -54,7 +54,7 @@ module.exports = (options) => ({
                 }
             },
             // Ignore warnings about System.import in Angular
-            { test: /[\/\\]@angular[\/\\].+\.js$/, parser: { system: true } },
+            {test: /[\/\\]@angular[\/\\].+\.js$/, parser: {system: true}},
         ]
     },
     plugins: [
@@ -73,14 +73,19 @@ module.exports = (options) => ({
             }
         }),
         new CopyWebpackPlugin([
-            { from: './node_modules/swagger-ui-dist/*.{js,css,html,png}', to: 'swagger-ui', flatten: true, ignore: ['index.html'] },
-            { from: './node_modules/axios/dist/axios.min.js', to: 'swagger-ui' },
-            { from: './src/main/webapp/swagger-ui/', to: 'swagger-ui' },
-            { from: './src/main/webapp/content/', to: 'content' },
-            { from: './src/main/webapp/favicon.ico', to: 'favicon.ico' },
-            { from: './src/main/webapp/manifest.webapp', to: 'manifest.webapp' },
+            {
+                from: './node_modules/swagger-ui-dist/*.{js,css,html,png}',
+                to: 'swagger-ui',
+                flatten: true,
+                ignore: ['index.html']
+            },
+            {from: './node_modules/axios/dist/axios.min.js', to: 'swagger-ui'},
+            {from: './src/main/webapp/swagger-ui/', to: 'swagger-ui'},
+            {from: './src/main/webapp/content/', to: 'content'},
+            {from: './src/main/webapp/favicon.ico', to: 'favicon.ico'},
+            {from: './src/main/webapp/manifest.webapp', to: 'manifest.webapp'},
             // jhipster-needle-add-assets-to-webpack - JHipster will add/remove third-party resources in this array
-            { from: './src/main/webapp/robots.txt', to: 'robots.txt' }
+            {from: './src/main/webapp/robots.txt', to: 'robots.txt'}
         ]),
         new HtmlWebpackPlugin({
             template: './src/main/webapp/index.html',
@@ -88,7 +93,7 @@ module.exports = (options) => ({
             chunksSortMode: 'manual',
             inject: 'body'
         }),
-        new BaseHrefWebpackPlugin({ baseHref: '/' }),
+        new BaseHrefWebpackPlugin({baseHref: '/'}),
         new AngularCompilerPlugin({
             mainPath: utils.root('src/main/webapp/app/app.main.ts'),
             tsConfigPath: utils.root('tsconfig.app.json'),

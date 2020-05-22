@@ -7,12 +7,12 @@ import java.util.Objects;
  * A DTO for the {@link com.opussoftware.domain.Subject} entity.
  */
 public class SubjectDTO implements Serializable {
-    
+
     private Long id;
 
     private String subject;
 
-    
+
     public Long getId() {
         return id;
     }

@@ -1,7 +1,9 @@
 package com.opussoftware.service.dto;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
+
 import com.opussoftware.web.rest.TestUtil;
 
 public class LoanDTOTest {

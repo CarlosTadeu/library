@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -66,7 +67,7 @@ public class LoanResourceIT {
 
     /**
      * Create an entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -78,9 +79,10 @@ public class LoanResourceIT {
             .numberOfRenewals(DEFAULT_NUMBER_OF_RENEWALS);
         return loan;
     }
+
     /**
      * Create an updated entity for this test.
-     *
+     * <p>
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
@@ -157,7 +159,7 @@ public class LoanResourceIT {
             .andExpect(jsonPath("$.[*].dateToBeReturned").value(hasItem(DEFAULT_DATE_TO_BE_RETURNED.toString())))
             .andExpect(jsonPath("$.[*].numberOfRenewals").value(hasItem(DEFAULT_NUMBER_OF_RENEWALS)));
     }
-    
+
     @Test
     @Transactional
     public void getLoan() throws Exception {
