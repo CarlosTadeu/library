@@ -9,8 +9,8 @@ import { BookDeleteDialogComponent } from './book-delete-dialog.component';
 import { bookRoute } from './book.route';
 
 @NgModule({
-  imports: [LibrarySharedModule, RouterModule.forChild(bookRoute)],
-  declarations: [BookComponent, BookDetailComponent, BookUpdateComponent, BookDeleteDialogComponent],
-  entryComponents: [BookDeleteDialogComponent]
+    imports: [LibrarySharedModule, RouterModule.forChild(bookRoute)],
+    declarations: [BookComponent, BookDetailComponent, BookUpdateComponent, BookDeleteDialogComponent],
+    entryComponents: [BookDeleteDialogComponent]
 })
 export class LibraryBookModule {}

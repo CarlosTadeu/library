@@ -15,7 +15,7 @@ import java.time.LocalDate;
  */
 @Data
 @Entity
-@Table(name = "loans")
+@Table(name = "loan")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Loan implements Serializable {
 
@@ -28,7 +28,7 @@ public class Loan implements Serializable {
     @Column(name = "loan_date")
     private LocalDate loanDate;
 
-    @Column(name = "date_returned")
+    @Column(name = "date_returned", columnDefinition = "Date default null")
     private LocalDate dateReturned;
 
     @Column(name = "date_to_be_returned")
@@ -38,11 +38,11 @@ public class Loan implements Serializable {
     private Integer numberOfRenewals;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn
     private LibraryUser user;
 
     @OneToOne
-    @JoinColumn(unique = true)
+    @JoinColumn
     private CopyBook copyBook;
 
     public Loan loanDate(LocalDate loanDate) {

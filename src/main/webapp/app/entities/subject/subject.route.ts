@@ -14,70 +14,70 @@ import { SubjectUpdateComponent } from './subject-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class SubjectResolve implements Resolve<ISubject> {
-  constructor(private service: SubjectService, private router: Router) {}
+    constructor(private service: SubjectService, private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<ISubject> | Observable<never> {
-    const id = route.params['id'];
-    if (id) {
-      return this.service.find(id).pipe(
-        flatMap((subject: HttpResponse<Subject>) => {
-          if (subject.body) {
-            return of(subject.body);
-          } else {
-            this.router.navigate(['404']);
-            return EMPTY;
-          }
-        })
-      );
+    resolve(route: ActivatedRouteSnapshot): Observable<ISubject> | Observable<never> {
+        const id = route.params['id'];
+        if (id) {
+            return this.service.find(id).pipe(
+                flatMap((subject: HttpResponse<Subject>) => {
+                    if (subject.body) {
+                        return of(subject.body);
+                    } else {
+                        this.router.navigate(['404']);
+                        return EMPTY;
+                    }
+                })
+            );
+        }
+        return of(new Subject());
     }
-    return of(new Subject());
-  }
 }
 
 export const subjectRoute: Routes = [
-  {
-    path: '',
-    component: SubjectComponent,
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'Subjects'
+    {
+        path: '',
+        component: SubjectComponent,
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'Subjects'
+        },
+        canActivate: [UserRouteAccessService]
     },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: ':id/view',
-    component: SubjectDetailComponent,
-    resolve: {
-      subject: SubjectResolve
+    {
+        path: ':id/view',
+        component: SubjectDetailComponent,
+        resolve: {
+            subject: SubjectResolve
+        },
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'Subjects'
+        },
+        canActivate: [UserRouteAccessService]
     },
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'Subjects'
+    {
+        path: 'new',
+        component: SubjectUpdateComponent,
+        resolve: {
+            subject: SubjectResolve
+        },
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'Subjects'
+        },
+        canActivate: [UserRouteAccessService]
     },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: 'new',
-    component: SubjectUpdateComponent,
-    resolve: {
-      subject: SubjectResolve
-    },
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'Subjects'
-    },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: ':id/edit',
-    component: SubjectUpdateComponent,
-    resolve: {
-      subject: SubjectResolve
-    },
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'Subjects'
-    },
-    canActivate: [UserRouteAccessService]
-  }
+    {
+        path: ':id/edit',
+        component: SubjectUpdateComponent,
+        resolve: {
+            subject: SubjectResolve
+        },
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'Subjects'
+        },
+        canActivate: [UserRouteAccessService]
+    }
 ];

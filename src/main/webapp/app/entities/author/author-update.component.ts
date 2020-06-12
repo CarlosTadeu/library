@@ -9,67 +9,67 @@ import { IAuthor, Author } from 'app/shared/model/author.model';
 import { AuthorService } from './author.service';
 
 @Component({
-  selector: 'jhi-author-update',
-  templateUrl: './author-update.component.html'
+    selector: 'jhi-author-update',
+    templateUrl: './author-update.component.html'
 })
 export class AuthorUpdateComponent implements OnInit {
-  isSaving = false;
+    isSaving = false;
 
-  editForm = this.fb.group({
-    id: [],
-    name: []
-  });
-
-  constructor(protected authorService: AuthorService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ author }) => {
-      this.updateForm(author);
+    editForm = this.fb.group({
+        id: [],
+        name: []
     });
-  }
 
-  updateForm(author: IAuthor): void {
-    this.editForm.patchValue({
-      id: author.id,
-      name: author.name
-    });
-  }
+    constructor(protected authorService: AuthorService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
-  previousState(): void {
-    window.history.back();
-  }
-
-  save(): void {
-    this.isSaving = true;
-    const author = this.createFromForm();
-    if (author.id !== undefined) {
-      this.subscribeToSaveResponse(this.authorService.update(author));
-    } else {
-      this.subscribeToSaveResponse(this.authorService.create(author));
+    ngOnInit(): void {
+        this.activatedRoute.data.subscribe(({ author }) => {
+            this.updateForm(author);
+        });
     }
-  }
 
-  private createFromForm(): IAuthor {
-    return {
-      ...new Author(),
-      id: this.editForm.get(['id'])!.value,
-      name: this.editForm.get(['name'])!.value
-    };
-  }
+    updateForm(author: IAuthor): void {
+        this.editForm.patchValue({
+            id: author.id,
+            name: author.name
+        });
+    }
 
-  protected subscribeToSaveResponse(result: Observable<HttpResponse<IAuthor>>): void {
-    result.subscribe(
-      () => this.onSaveSuccess(),
-      () => this.onSaveError()
-    );
-  }
+    previousState(): void {
+        window.history.back();
+    }
 
-  protected onSaveSuccess(): void {
-    this.isSaving = false;
-    this.previousState();
-  }
+    save(): void {
+        this.isSaving = true;
+        const author = this.createFromForm();
+        if (author.id !== undefined) {
+            this.subscribeToSaveResponse(this.authorService.update(author));
+        } else {
+            this.subscribeToSaveResponse(this.authorService.create(author));
+        }
+    }
 
-  protected onSaveError(): void {
-    this.isSaving = false;
-  }
+    private createFromForm(): IAuthor {
+        return {
+            ...new Author(),
+            id: this.editForm.get(['id'])!.value,
+            name: this.editForm.get(['name'])!.value
+        };
+    }
+
+    protected subscribeToSaveResponse(result: Observable<HttpResponse<IAuthor>>): void {
+        result.subscribe(
+            () => this.onSaveSuccess(),
+            () => this.onSaveError()
+        );
+    }
+
+    protected onSaveSuccess(): void {
+        this.isSaving = false;
+        this.previousState();
+    }
+
+    protected onSaveError(): void {
+        this.isSaving = false;
+    }
 }

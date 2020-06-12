@@ -11,28 +11,28 @@ type EntityArrayResponseType = HttpResponse<ISubject[]>;
 
 @Injectable({ providedIn: 'root' })
 export class SubjectService {
-  public resourceUrl = SERVER_API_URL + 'api/subjects';
+    public resourceUrl = SERVER_API_URL + 'api/subjects';
 
-  constructor(protected http: HttpClient) {}
+    constructor(protected http: HttpClient) {}
 
-  create(subject: ISubject): Observable<EntityResponseType> {
-    return this.http.post<ISubject>(this.resourceUrl, subject, { observe: 'response' });
-  }
+    create(subject: ISubject): Observable<EntityResponseType> {
+        return this.http.post<ISubject>(this.resourceUrl, subject, { observe: 'response' });
+    }
 
-  update(subject: ISubject): Observable<EntityResponseType> {
-    return this.http.put<ISubject>(this.resourceUrl, subject, { observe: 'response' });
-  }
+    update(subject: ISubject): Observable<EntityResponseType> {
+        return this.http.put<ISubject>(this.resourceUrl, subject, { observe: 'response' });
+    }
 
-  find(id: number): Observable<EntityResponseType> {
-    return this.http.get<ISubject>(`${this.resourceUrl}/${id}`, { observe: 'response' });
-  }
+    find(id: number): Observable<EntityResponseType> {
+        return this.http.get<ISubject>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
 
-  query(req?: any): Observable<EntityArrayResponseType> {
-    const options = createRequestOption(req);
-    return this.http.get<ISubject[]>(this.resourceUrl, { params: options, observe: 'response' });
-  }
+    query(req?: any): Observable<EntityArrayResponseType> {
+        const options = createRequestOption(req);
+        return this.http.get<ISubject[]>(this.resourceUrl, { params: options, observe: 'response' });
+    }
 
-  delete(id: number): Observable<HttpResponse<{}>> {
-    return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
-  }
+    delete(id: number): Observable<HttpResponse<{}>> {
+        return this.http.delete(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
 }

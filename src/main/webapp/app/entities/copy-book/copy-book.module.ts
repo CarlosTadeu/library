@@ -9,8 +9,8 @@ import { CopyBookDeleteDialogComponent } from './copy-book-delete-dialog.compone
 import { copyBookRoute } from './copy-book.route';
 
 @NgModule({
-  imports: [LibrarySharedModule, RouterModule.forChild(copyBookRoute)],
-  declarations: [CopyBookComponent, CopyBookDetailComponent, CopyBookUpdateComponent, CopyBookDeleteDialogComponent],
-  entryComponents: [CopyBookDeleteDialogComponent]
+    imports: [LibrarySharedModule, RouterModule.forChild(copyBookRoute)],
+    declarations: [CopyBookComponent, CopyBookDetailComponent, CopyBookUpdateComponent, CopyBookDeleteDialogComponent],
+    entryComponents: [CopyBookDeleteDialogComponent]
 })
 export class LibraryCopyBookModule {}

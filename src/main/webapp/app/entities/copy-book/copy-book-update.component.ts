@@ -11,82 +11,82 @@ import { IBook } from 'app/shared/model/book.model';
 import { BookService } from 'app/entities/book/book.service';
 
 @Component({
-  selector: 'jhi-copy-book-update',
-  templateUrl: './copy-book-update.component.html'
+    selector: 'jhi-copy-book-update',
+    templateUrl: './copy-book-update.component.html'
 })
 export class CopyBookUpdateComponent implements OnInit {
-  isSaving = false;
-  books: IBook[] = [];
+    isSaving = false;
+    books: IBook[] = [];
 
-  editForm = this.fb.group({
-    id: [],
-    available: [],
-    bookId: []
-  });
-
-  constructor(
-    protected copyBookService: CopyBookService,
-    protected bookService: BookService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
-
-  ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ copyBook }) => {
-      this.updateForm(copyBook);
-
-      this.bookService.query().subscribe((res: HttpResponse<IBook[]>) => (this.books = res.body || []));
+    editForm = this.fb.group({
+        id: [],
+        available: [],
+        bookId: []
     });
-  }
 
-  updateForm(copyBook: ICopyBook): void {
-    this.editForm.patchValue({
-      id: copyBook.id,
-      available: copyBook.available,
-      bookId: copyBook.bookId
-    });
-  }
+    constructor(
+        protected copyBookService: CopyBookService,
+        protected bookService: BookService,
+        protected activatedRoute: ActivatedRoute,
+        private fb: FormBuilder
+    ) {}
 
-  previousState(): void {
-    window.history.back();
-  }
+    ngOnInit(): void {
+        this.activatedRoute.data.subscribe(({ copyBook }) => {
+            this.updateForm(copyBook);
 
-  save(): void {
-    this.isSaving = true;
-    const copyBook = this.createFromForm();
-    if (copyBook.id !== undefined) {
-      this.subscribeToSaveResponse(this.copyBookService.update(copyBook));
-    } else {
-      this.subscribeToSaveResponse(this.copyBookService.create(copyBook));
+            this.bookService.query().subscribe((res: HttpResponse<IBook[]>) => (this.books = res.body || []));
+        });
     }
-  }
 
-  private createFromForm(): ICopyBook {
-    return {
-      ...new CopyBook(),
-      id: this.editForm.get(['id'])!.value,
-      available: this.editForm.get(['available'])!.value,
-      bookId: this.editForm.get(['bookId'])!.value
-    };
-  }
+    updateForm(copyBook: ICopyBook): void {
+        this.editForm.patchValue({
+            id: copyBook.id,
+            available: copyBook.available,
+            bookId: copyBook.bookId
+        });
+    }
 
-  protected subscribeToSaveResponse(result: Observable<HttpResponse<ICopyBook>>): void {
-    result.subscribe(
-      () => this.onSaveSuccess(),
-      () => this.onSaveError()
-    );
-  }
+    previousState(): void {
+        window.history.back();
+    }
 
-  protected onSaveSuccess(): void {
-    this.isSaving = false;
-    this.previousState();
-  }
+    save(): void {
+        this.isSaving = true;
+        const copyBook = this.createFromForm();
+        if (copyBook.id !== undefined) {
+            this.subscribeToSaveResponse(this.copyBookService.update(copyBook));
+        } else {
+            this.subscribeToSaveResponse(this.copyBookService.create(copyBook));
+        }
+    }
 
-  protected onSaveError(): void {
-    this.isSaving = false;
-  }
+    private createFromForm(): ICopyBook {
+        return {
+            ...new CopyBook(),
+            id: this.editForm.get(['id'])!.value,
+            available: this.editForm.get(['available'])!.value,
+            bookId: this.editForm.get(['bookId'])!.value
+        };
+    }
 
-  trackById(index: number, item: IBook): any {
-    return item.id;
-  }
+    protected subscribeToSaveResponse(result: Observable<HttpResponse<ICopyBook>>): void {
+        result.subscribe(
+            () => this.onSaveSuccess(),
+            () => this.onSaveError()
+        );
+    }
+
+    protected onSaveSuccess(): void {
+        this.isSaving = false;
+        this.previousState();
+    }
+
+    protected onSaveError(): void {
+        this.isSaving = false;
+    }
+
+    trackById(index: number, item: IBook): any {
+        return item.id;
+    }
 }

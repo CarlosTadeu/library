@@ -5,6 +5,7 @@ import com.opussoftware.domain.Book;
 import com.opussoftware.repository.BookRepository;
 import com.opussoftware.service.dto.BookDTO;
 import com.opussoftware.service.mapper.BookMapper;
+import com.opussoftware.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,6 +35,22 @@ public class BookServiceImpl implements BookService {
     public BookServiceImpl(BookRepository bookRepository, BookMapper bookMapper) {
         this.bookRepository = bookRepository;
         this.bookMapper = bookMapper;
+    }
+
+    /**
+     * Create a book.
+     *
+     * @param bookDTO the entity to save.
+     * @return the persisted entity.
+     */
+    @Override
+    public BookDTO create(BookDTO bookDTO) {
+        log.debug("Request to create Book : {}", bookDTO);
+
+        if(bookRepository.existsBooksByIsbn(bookDTO.getIsbn()))
+            throw new BadRequestAlertException("Isbn already exists", "book", "isbnexists");
+
+        return save(bookDTO);
     }
 
     /**

@@ -6,11 +6,11 @@ import { LibraryAppModule } from './app.module';
 ProdConfig();
 
 if (module['hot']) {
-  module['hot'].accept();
+    module['hot'].accept();
 }
 
 platformBrowserDynamic()
-  .bootstrapModule(LibraryAppModule, { preserveWhitespaces: true })
-  // eslint-disable-next-line no-console
-  .then(() => console.log('Application started'))
-  .catch(err => console.error(err));
+    .bootstrapModule(LibraryAppModule, { preserveWhitespaces: true })
+    // eslint-disable-next-line no-console
+    .then(() => console.log('Application started'))
+    .catch(err => console.error(err));

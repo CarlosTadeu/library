@@ -4,19 +4,19 @@ import { ActivatedRoute } from '@angular/router';
 import { IBook } from 'app/shared/model/book.model';
 
 @Component({
-  selector: 'jhi-book-detail',
-  templateUrl: './book-detail.component.html'
+    selector: 'jhi-book-detail',
+    templateUrl: './book-detail.component.html'
 })
 export class BookDetailComponent implements OnInit {
-  book: IBook | null = null;
+    book: IBook | null = null;
 
-  constructor(protected activatedRoute: ActivatedRoute) {}
+    constructor(protected activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ book }) => (this.book = book));
-  }
+    ngOnInit(): void {
+        this.activatedRoute.data.subscribe(({ book }) => (this.book = book));
+    }
 
-  previousState(): void {
-    window.history.back();
-  }
+    previousState(): void {
+        window.history.back();
+    }
 }

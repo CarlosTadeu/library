@@ -5,11 +5,11 @@ import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 
 export const registerRoute: Route = {
-  path: 'register',
-  component: RegisterComponent,
-  data: {
-    authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-    pageTitle: 'Registration'
-  },
-  canActivate: [UserRouteAccessService]
+    path: 'register',
+    component: RegisterComponent,
+    data: {
+        authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+        pageTitle: 'Registration'
+    },
+    canActivate: [UserRouteAccessService]
 };

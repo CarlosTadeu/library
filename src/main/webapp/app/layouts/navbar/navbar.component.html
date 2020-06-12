@@ -1,7 +1,8 @@
 <nav class="navbar navbar-dark navbar-expand-md bg-dark">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
         <span class="logo-img"></span>
-        <span class="navbar-title">SISTEMA DE BIBLIOTECA DA OPUS</span> <span class="navbar-version">{{ version }}</span>
+        <span class="navbar-title">SISTEMA DE BIBLIOTECA DA OPUS</span> <span
+        class="navbar-version">{{ version }}</span>
     </a>
     <a class="navbar-toggler d-lg-none" href="javascript:void(0);" data-toggle="collapse"
        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -19,10 +20,88 @@
                     </span>
                 </a>
             </li>
+
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <a *jhiHasAnyAuthority="['ROLE_USER']" class="nav-link" routerLink="search">
+                    <span>
+                        <fa-icon icon="search"></fa-icon>
+                        <span>
+                            Search
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <a *jhiHasAnyAuthority="['ROLE_USER']" class="nav-link" routerLink="loan/user">
+                    <span>
+                        <fa-icon icon="th-list"></fa-icon>
+                        <span>
+                            My Loans
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <a *jhiHasAnyAuthority="['ROLE_USER']" class="nav-link" routerLink="student-type/user">
+                    <span>
+                        <fa-icon icon="info-circle"></fa-icon>
+                        <span>
+                            Deadline Info
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li *ngSwitchCase="true" class="nav-item" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <a *jhiHasAnyAuthority="['ROLE_LIBRARIAN']" class="nav-link" routerLink="library-user/new" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="th-list"></fa-icon>
+                        <span>
+                            Create User
+                        </span>
+                    </span>
+                </a>
+            </li>
+
+            <li ngbDropdown class="nav-item dropdown pointer" display="dynamic"
+                routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a *jhiHasAnyAuthority="['ROLE_LIBRARIAN']" class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="option-loan">
+                    <span>
+                        <fa-icon icon="th-list"></fa-icon>
+                        <span>
+                            Loan
+                        </span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+                    <li>
+                        <a class="dropdown-item" routerLink="loan/new" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Make Loan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="loan/return" routerLinkActive="active"
+                           [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <span>Make Devolution</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" display="dynamic"
                 routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <a *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_LIBRARIAN']" class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
+                <a *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_LIBRARIAN']" class="nav-link dropdown-toggle"
+                   ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
                     <span>
                         <fa-icon icon="th-list"></fa-icon>
                         <span>
@@ -191,7 +270,8 @@
                         </a>
                     </li>
                     <li *ngSwitchCase="false">
-                        <a *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_LIBRARIAN']" class="dropdown-item" routerLink="account/register" routerLinkActive="active"
+                        <a *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_LIBRARIAN']" class="dropdown-item"
+                           routerLink="account/register" routerLinkActive="active"
                            (click)="collapseNavbar()">
                             <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
                             <span>Register</span>

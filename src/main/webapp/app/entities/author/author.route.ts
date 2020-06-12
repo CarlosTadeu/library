@@ -14,70 +14,70 @@ import { AuthorUpdateComponent } from './author-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class AuthorResolve implements Resolve<IAuthor> {
-  constructor(private service: AuthorService, private router: Router) {}
+    constructor(private service: AuthorService, private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<IAuthor> | Observable<never> {
-    const id = route.params['id'];
-    if (id) {
-      return this.service.find(id).pipe(
-        flatMap((author: HttpResponse<Author>) => {
-          if (author.body) {
-            return of(author.body);
-          } else {
-            this.router.navigate(['404']);
-            return EMPTY;
-          }
-        })
-      );
+    resolve(route: ActivatedRouteSnapshot): Observable<IAuthor> | Observable<never> {
+        const id = route.params['id'];
+        if (id) {
+            return this.service.find(id).pipe(
+                flatMap((author: HttpResponse<Author>) => {
+                    if (author.body) {
+                        return of(author.body);
+                    } else {
+                        this.router.navigate(['404']);
+                        return EMPTY;
+                    }
+                })
+            );
+        }
+        return of(new Author());
     }
-    return of(new Author());
-  }
 }
 
 export const authorRoute: Routes = [
-  {
-    path: '',
-    component: AuthorComponent,
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'Authors'
+    {
+        path: '',
+        component: AuthorComponent,
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'Authors'
+        },
+        canActivate: [UserRouteAccessService]
     },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: ':id/view',
-    component: AuthorDetailComponent,
-    resolve: {
-      author: AuthorResolve
+    {
+        path: ':id/view',
+        component: AuthorDetailComponent,
+        resolve: {
+            author: AuthorResolve
+        },
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'Authors'
+        },
+        canActivate: [UserRouteAccessService]
     },
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'Authors'
+    {
+        path: 'new',
+        component: AuthorUpdateComponent,
+        resolve: {
+            author: AuthorResolve
+        },
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'Authors'
+        },
+        canActivate: [UserRouteAccessService]
     },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: 'new',
-    component: AuthorUpdateComponent,
-    resolve: {
-      author: AuthorResolve
-    },
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'Authors'
-    },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: ':id/edit',
-    component: AuthorUpdateComponent,
-    resolve: {
-      author: AuthorResolve
-    },
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'Authors'
-    },
-    canActivate: [UserRouteAccessService]
-  }
+    {
+        path: ':id/edit',
+        component: AuthorUpdateComponent,
+        resolve: {
+            author: AuthorResolve
+        },
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'Authors'
+        },
+        canActivate: [UserRouteAccessService]
+    }
 ];

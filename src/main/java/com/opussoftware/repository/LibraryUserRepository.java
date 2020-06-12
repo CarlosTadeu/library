@@ -11,4 +11,6 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface LibraryUserRepository extends JpaRepository<LibraryUser, Long> {
+
+    LibraryUser findByRg(String rg);
 }

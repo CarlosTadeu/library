@@ -9,8 +9,8 @@ import { SubjectDeleteDialogComponent } from './subject-delete-dialog.component'
 import { subjectRoute } from './subject.route';
 
 @NgModule({
-  imports: [LibrarySharedModule, RouterModule.forChild(subjectRoute)],
-  declarations: [SubjectComponent, SubjectDetailComponent, SubjectUpdateComponent, SubjectDeleteDialogComponent],
-  entryComponents: [SubjectDeleteDialogComponent]
+    imports: [LibrarySharedModule, RouterModule.forChild(subjectRoute)],
+    declarations: [SubjectComponent, SubjectDetailComponent, SubjectUpdateComponent, SubjectDeleteDialogComponent],
+    entryComponents: [SubjectDeleteDialogComponent]
 })
 export class LibrarySubjectModule {}

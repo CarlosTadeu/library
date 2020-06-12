@@ -8,42 +8,42 @@ import { BookService } from 'app/entities/book/book.service';
 import { Book } from 'app/shared/model/book.model';
 
 describe('Component Tests', () => {
-  describe('Book Management Component', () => {
-    let comp: BookComponent;
-    let fixture: ComponentFixture<BookComponent>;
-    let service: BookService;
+    describe('Book Management Component', () => {
+        let comp: BookComponent;
+        let fixture: ComponentFixture<BookComponent>;
+        let service: BookService;
 
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        imports: [LibraryTestModule],
-        declarations: [BookComponent]
-      })
-        .overrideTemplate(BookComponent, '')
-        .compileComponents();
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                imports: [LibraryTestModule],
+                declarations: [BookComponent]
+            })
+                .overrideTemplate(BookComponent, '')
+                .compileComponents();
 
-      fixture = TestBed.createComponent(BookComponent);
-      comp = fixture.componentInstance;
-      service = fixture.debugElement.injector.get(BookService);
+            fixture = TestBed.createComponent(BookComponent);
+            comp = fixture.componentInstance;
+            service = fixture.debugElement.injector.get(BookService);
+        });
+
+        it('Should call load all on init', () => {
+            // GIVEN
+            const headers = new HttpHeaders().append('link', 'link;link');
+            spyOn(service, 'query').and.returnValue(
+                of(
+                    new HttpResponse({
+                        body: [new Book(123)],
+                        headers
+                    })
+                )
+            );
+
+            // WHEN
+            comp.ngOnInit();
+
+            // THEN
+            expect(service.query).toHaveBeenCalled();
+            expect(comp.books && comp.books[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+        });
     });
-
-    it('Should call load all on init', () => {
-      // GIVEN
-      const headers = new HttpHeaders().append('link', 'link;link');
-      spyOn(service, 'query').and.returnValue(
-        of(
-          new HttpResponse({
-            body: [new Book(123)],
-            headers
-          })
-        )
-      );
-
-      // WHEN
-      comp.ngOnInit();
-
-      // THEN
-      expect(service.query).toHaveBeenCalled();
-      expect(comp.books && comp.books[0]).toEqual(jasmine.objectContaining({ id: 123 }));
-    });
-  });
 });

@@ -7,24 +7,27 @@ import { LibraryCoreModule } from 'app/core/core.module';
 import { LibraryAppRoutingModule } from './app-routing.module';
 import { LibraryHomeModule } from './home/home.module';
 import { LibraryEntityModule } from './entities/entity.module';
+import { LibrarySearchModule } from './search/search.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ErrorComponent } from './layouts/error/error.component';
+import { CarouselComponent } from './home/carousel.component';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    LibrarySharedModule,
-    LibraryCoreModule,
-    LibraryHomeModule,
-    // jhipster-needle-angular-add-module JHipster will add new module here
-    LibraryEntityModule,
-    LibraryAppRoutingModule
-  ],
-  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],
-  bootstrap: [MainComponent]
+    imports: [
+        BrowserModule,
+        LibrarySharedModule,
+        LibraryCoreModule,
+        LibraryHomeModule,
+        // jhipster-needle-angular-add-module JHipster will add new module here
+        LibraryEntityModule,
+        LibrarySearchModule,
+        LibraryAppRoutingModule
+    ],
+    declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent, CarouselComponent],
+    bootstrap: [MainComponent]
 })
 export class LibraryAppModule {}

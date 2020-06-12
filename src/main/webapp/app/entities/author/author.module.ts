@@ -9,8 +9,8 @@ import { AuthorDeleteDialogComponent } from './author-delete-dialog.component';
 import { authorRoute } from './author.route';
 
 @NgModule({
-  imports: [LibrarySharedModule, RouterModule.forChild(authorRoute)],
-  declarations: [AuthorComponent, AuthorDetailComponent, AuthorUpdateComponent, AuthorDeleteDialogComponent],
-  entryComponents: [AuthorDeleteDialogComponent]
+    imports: [LibrarySharedModule, RouterModule.forChild(authorRoute)],
+    declarations: [AuthorComponent, AuthorDetailComponent, AuthorUpdateComponent, AuthorDeleteDialogComponent],
+    entryComponents: [AuthorDeleteDialogComponent]
 })
 export class LibraryAuthorModule {}

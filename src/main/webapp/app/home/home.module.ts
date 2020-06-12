@@ -6,7 +6,7 @@ import { HOME_ROUTE } from './home.route';
 import { HomeComponent } from './home.component';
 
 @NgModule({
-  imports: [LibrarySharedModule, RouterModule.forChild([HOME_ROUTE])],
-  declarations: [HomeComponent]
+    imports: [LibrarySharedModule, RouterModule.forChild([HOME_ROUTE])],
+    declarations: [HomeComponent]
 })
 export class LibraryHomeModule {}

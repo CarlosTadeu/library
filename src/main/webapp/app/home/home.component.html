@@ -1,49 +1,41 @@
-<div class="row">
-    <div class="col-md-3">
-        <span class="hipster img-fluid rounded"></span>
-    </div>
+<div class="container">
+    <h1 class="display-4">Welcome, Opus Library!</h1>
 
-    <div class="col-md-9">
-        <h1 class="display-4">Welcome, Opus Library!</h1>
-
-        <p class="lead">This is your homepage</p>
-
-        <div [ngSwitch]="isAuthenticated()">
-            <div class="alert alert-success" *ngSwitchCase="true">
-                <span id="home-logged-message" *ngIf="account">You are logged in as user "{{ account.login }}".</span>
-            </div>
-
-            <div class="alert alert-warning" *ngSwitchCase="false">
-                <span>If you want to </span>
-                <a class="alert-link" (click)="login()">sign in</a><span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
-            </div>
-
-            <div class="alert alert-warning" *ngSwitchCase="false">
-                <span>You don't have an account yet?</span>&nbsp;
-                <a class="alert-link" routerLink="account/register">Register a new account</a>
-            </div>
+    <div [ngSwitch]="isAuthenticated()">
+        <div class="alert alert-success" *ngSwitchCase="true">
+            <span id="home-logged-message" *ngIf="account">You are logged in as user "{{ account.login }}".</span>
         </div>
-
-        <p>
-            If you have any question on JHipster:
-        </p>
-
-        <ul>
-            <li><a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">JHipster homepage</a>
-            </li>
-            <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">JHipster
-                on Stack Overflow</a></li>
-            <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank"
-                   rel="noopener noreferrer">JHipster bug tracker</a></li>
-            <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">JHipster
-                public chat room</a></li>
-            <li><a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">follow @jhipster on
-                Twitter</a></li>
-        </ul>
-
-        <p>
-            <span>Projeto de estágio 2020 - Opus desenvolvido por Carlos Tadeu</span> <a
-            href="https://github.com/CarlosTadeu/library" target="_blank" rel="noopener noreferrer">GitHub</a>!
-        </p>
     </div>
+
+    <div class="alert alert-dark" role="alert">
+        <div class="text-center">
+            <b>Últimas aquisições</b>
+        </div>
+    </div>
+    <div>
+        <ngb-carousel>
+            <ng-template ngbSlide>
+                <div class="text-center">
+                    <img class="rounded mx-auto" src="../../content/images/latest-books/book3.jpg" alt="Book 1">
+                    <img class="rounded mx-auto" src="../../content/images/latest-books/book4.jpg" alt="Book 2">
+                    <img class="rounded mx-auto" src="../../content/images/latest-books/book5.jpg" alt="Book 3">
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <div class="text-center">
+                    <img class="rounded mx-auto" src="../../content/images/latest-books/book6.jpg" alt="Book 1">
+                    <img class="rounded mx-auto" src="../../content/images/latest-books/book7.jpg" alt="Book 2">
+                    <img class="rounded mx-auto" src="../../content/images/latest-books/book8.jpg" alt="Book 3">
+                </div>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+
+    <br><br>
+
+    <p>
+        <span>Projeto de estágio 2020 - Opus desenvolvido por Carlos Tadeu</span> <a
+        href="https://github.com/CarlosTadeu/library" target="_blank" rel="noopener noreferrer">GitHub</a>!
+    </p>
+</div>
 </div>

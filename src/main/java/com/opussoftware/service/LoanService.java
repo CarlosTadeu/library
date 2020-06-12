@@ -1,5 +1,6 @@
 package com.opussoftware.service;
 
+import com.opussoftware.service.dto.CopyBookDTO;
 import com.opussoftware.service.dto.LoanDTO;
 
 import java.util.List;
@@ -11,12 +12,36 @@ import java.util.Optional;
 public interface LoanService {
 
     /**
+     * Renew a loan.
+     *
+     * @param loanDTO the id of the entity.
+     * @return the entity.
+     */
+    LoanDTO renewLoan(LoanDTO loanDTO);
+
+    /**
      * Save a loan.
      *
      * @param loanDTO the entity to save.
      * @return the persisted entity.
      */
     LoanDTO save(LoanDTO loanDTO);
+
+    /**
+     * Create a loan.
+     *
+     * @param loanDTO the entity to create.
+     * @return the persisted entity
+     */
+    LoanDTO create(LoanDTO loanDTO);
+
+    /**
+     * Return a loan.
+     *
+     * @param copyBookDTO the copy book to return.
+     * @return the entity
+     */
+    LoanDTO returnLoan(CopyBookDTO copyBookDTO);
 
     /**
      * Get all the loans.
@@ -39,4 +64,11 @@ public interface LoanService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    /**
+     * Get all the loans of the user.
+     *
+     * @return the list of entities.
+     */
+    List<LoanDTO> findAllByUser();
 }

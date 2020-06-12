@@ -14,70 +14,70 @@ import { CopyBookUpdateComponent } from './copy-book-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class CopyBookResolve implements Resolve<ICopyBook> {
-  constructor(private service: CopyBookService, private router: Router) {}
+    constructor(private service: CopyBookService, private router: Router) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<ICopyBook> | Observable<never> {
-    const id = route.params['id'];
-    if (id) {
-      return this.service.find(id).pipe(
-        flatMap((copyBook: HttpResponse<CopyBook>) => {
-          if (copyBook.body) {
-            return of(copyBook.body);
-          } else {
-            this.router.navigate(['404']);
-            return EMPTY;
-          }
-        })
-      );
+    resolve(route: ActivatedRouteSnapshot): Observable<ICopyBook> | Observable<never> {
+        const id = route.params['id'];
+        if (id) {
+            return this.service.find(id).pipe(
+                flatMap((copyBook: HttpResponse<CopyBook>) => {
+                    if (copyBook.body) {
+                        return of(copyBook.body);
+                    } else {
+                        this.router.navigate(['404']);
+                        return EMPTY;
+                    }
+                })
+            );
+        }
+        return of(new CopyBook());
     }
-    return of(new CopyBook());
-  }
 }
 
 export const copyBookRoute: Routes = [
-  {
-    path: '',
-    component: CopyBookComponent,
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'CopyBooks'
+    {
+        path: '',
+        component: CopyBookComponent,
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'CopyBooks'
+        },
+        canActivate: [UserRouteAccessService]
     },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: ':id/view',
-    component: CopyBookDetailComponent,
-    resolve: {
-      copyBook: CopyBookResolve
+    {
+        path: ':id/view',
+        component: CopyBookDetailComponent,
+        resolve: {
+            copyBook: CopyBookResolve
+        },
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'CopyBooks'
+        },
+        canActivate: [UserRouteAccessService]
     },
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'CopyBooks'
+    {
+        path: 'new',
+        component: CopyBookUpdateComponent,
+        resolve: {
+            copyBook: CopyBookResolve
+        },
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'CopyBooks'
+        },
+        canActivate: [UserRouteAccessService]
     },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: 'new',
-    component: CopyBookUpdateComponent,
-    resolve: {
-      copyBook: CopyBookResolve
-    },
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'CopyBooks'
-    },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: ':id/edit',
-    component: CopyBookUpdateComponent,
-    resolve: {
-      copyBook: CopyBookResolve
-    },
-    data: {
-      authorities: [Authority.ADMIN, Authority.LIBRARIAN],
-      pageTitle: 'CopyBooks'
-    },
-    canActivate: [UserRouteAccessService]
-  }
+    {
+        path: ':id/edit',
+        component: CopyBookUpdateComponent,
+        resolve: {
+            copyBook: CopyBookResolve
+        },
+        data: {
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            pageTitle: 'CopyBooks'
+        },
+        canActivate: [UserRouteAccessService]
+    }
 ];

@@ -4,19 +4,19 @@ import { ActivatedRoute } from '@angular/router';
 import { ICopyBook } from 'app/shared/model/copy-book.model';
 
 @Component({
-  selector: 'jhi-copy-book-detail',
-  templateUrl: './copy-book-detail.component.html'
+    selector: 'jhi-copy-book-detail',
+    templateUrl: './copy-book-detail.component.html'
 })
 export class CopyBookDetailComponent implements OnInit {
-  copyBook: ICopyBook | null = null;
+    copyBook: ICopyBook | null = null;
 
-  constructor(protected activatedRoute: ActivatedRoute) {}
+    constructor(protected activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ copyBook }) => (this.copyBook = copyBook));
-  }
+    ngOnInit(): void {
+        this.activatedRoute.data.subscribe(({ copyBook }) => (this.copyBook = copyBook));
+    }
 
-  previousState(): void {
-    window.history.back();
-  }
+    previousState(): void {
+        window.history.back();
+    }
 }

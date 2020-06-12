@@ -1,9 +1,9 @@
 package com.opussoftware.web.rest;
 
 import com.opussoftware.service.LoanService;
-import com.opussoftware.web.rest.errors.BadRequestAlertException;
+import com.opussoftware.service.dto.CopyBookDTO;
 import com.opussoftware.service.dto.LoanDTO;
-
+import com.opussoftware.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -50,9 +50,51 @@ public class LoanResource {
         if (loanDTO.getId() != null) {
             throw new BadRequestAlertException("A new loan cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        LoanDTO result = loanService.save(loanDTO);
+        LoanDTO result = loanService.create(loanDTO);
         return ResponseEntity.created(new URI("/api/loans/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+
+    /**
+     * {@code PUT  /loans/return} : Updates an existing loan.
+     *
+     * @param copyBookDTO the Copy Book to update the loan.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated loanDTO,
+     * or with status {@code 400 (Bad Request)} if the Copy Id is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the loanDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping("/loans/return")
+    public ResponseEntity<LoanDTO> returnLoan(@RequestBody CopyBookDTO copyBookDTO) throws URISyntaxException {
+        log.debug("REST request to return CopyBook : {}", copyBookDTO);
+        if (copyBookDTO.getId() == null) {
+            throw new BadRequestAlertException("Invalid copy id", ENTITY_NAME, "copyidnull");
+        }
+        LoanDTO result = loanService.returnLoan(copyBookDTO);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
+            .body(result);
+    }
+
+    /**
+     * {@code PUT  /loans/renew} : Updates an existing loan.
+     *
+     * @param loanDTO the loanDTO to update.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated loanDTO,
+     * or with status {@code 400 (Bad Request)} if the loanDTO is not valid,
+     * or with status {@code 500 (Internal Server Error)} if the loanDTO couldn't be updated.
+     * @throws URISyntaxException if the Location URI syntax is incorrect.
+     */
+    @PutMapping("/loans/renew")
+    public ResponseEntity<LoanDTO> renewLoan(@RequestBody LoanDTO loanDTO) throws URISyntaxException {
+        log.debug("REST request to renew Loan : {}", loanDTO);
+        if (loanDTO.getId() == null) {
+            throw new BadRequestAlertException("Invalid copy id", ENTITY_NAME, "copyidnull");
+        }
+        LoanDTO result = loanService.renewLoan(loanDTO);
+        return ResponseEntity.ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
@@ -86,6 +128,17 @@ public class LoanResource {
     public List<LoanDTO> getAllLoans() {
         log.debug("REST request to get all Loans");
         return loanService.findAll();
+    }
+
+    /**
+     * {@code GET  /loans} : get all the loans by user.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of loans in body.
+     */
+    @GetMapping("/loans/user")
+    public List<LoanDTO> getLoansByLibraryUser() {
+        log.debug("REST request to get all loans by user");
+        return loanService.findAllByUser();
     }
 
     /**

@@ -7,7 +7,7 @@ import { LogsComponent } from './logs.component';
 import { logsRoute } from './logs.route';
 
 @NgModule({
-  imports: [LibrarySharedModule, RouterModule.forChild([logsRoute])],
-  declarations: [LogsComponent]
+    imports: [LibrarySharedModule, RouterModule.forChild([logsRoute])],
+    declarations: [LogsComponent]
 })
 export class LogsModule {}

@@ -8,56 +8,56 @@ import { LoginService } from 'app/core/login/login.service';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 
 @Component({
-  selector: 'jhi-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['navbar.scss']
+    selector: 'jhi-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['navbar.scss']
 })
 export class NavbarComponent implements OnInit {
-  inProduction?: boolean;
-  isNavbarCollapsed = true;
-  swaggerEnabled?: boolean;
-  version: string;
+    inProduction?: boolean;
+    isNavbarCollapsed = true;
+    swaggerEnabled?: boolean;
+    version: string;
 
-  constructor(
-    private loginService: LoginService,
-    private accountService: AccountService,
-    private loginModalService: LoginModalService,
-    private profileService: ProfileService,
-    private router: Router
-  ) {
-    this.version = VERSION ? (VERSION.toLowerCase().startsWith('v') ? VERSION : 'v' + VERSION) : '';
-  }
+    constructor(
+        private loginService: LoginService,
+        private accountService: AccountService,
+        private loginModalService: LoginModalService,
+        private profileService: ProfileService,
+        private router: Router
+    ) {
+        this.version = VERSION ? (VERSION.toLowerCase().startsWith('v') ? VERSION : 'v' + VERSION) : '';
+    }
 
-  ngOnInit(): void {
-    this.profileService.getProfileInfo().subscribe(profileInfo => {
-      this.inProduction = profileInfo.inProduction;
-      this.swaggerEnabled = profileInfo.swaggerEnabled;
-    });
-  }
+    ngOnInit(): void {
+        this.profileService.getProfileInfo().subscribe(profileInfo => {
+            this.inProduction = profileInfo.inProduction;
+            this.swaggerEnabled = profileInfo.swaggerEnabled;
+        });
+    }
 
-  collapseNavbar(): void {
-    this.isNavbarCollapsed = true;
-  }
+    collapseNavbar(): void {
+        this.isNavbarCollapsed = true;
+    }
 
-  isAuthenticated(): boolean {
-    return this.accountService.isAuthenticated();
-  }
+    isAuthenticated(): boolean {
+        return this.accountService.isAuthenticated();
+    }
 
-  login(): void {
-    this.loginModalService.open();
-  }
+    login(): void {
+        this.loginModalService.open();
+    }
 
-  logout(): void {
-    this.collapseNavbar();
-    this.loginService.logout();
-    this.router.navigate(['']);
-  }
+    logout(): void {
+        this.collapseNavbar();
+        this.loginService.logout();
+        this.router.navigate(['']);
+    }
 
-  toggleNavbar(): void {
-    this.isNavbarCollapsed = !this.isNavbarCollapsed;
-  }
+    toggleNavbar(): void {
+        this.isNavbarCollapsed = !this.isNavbarCollapsed;
+    }
 
-  getImageUrl(): string {
-    return this.isAuthenticated() ? this.accountService.getImageUrl() : '';
-  }
+    getImageUrl(): string {
+        return this.isAuthenticated() ? this.accountService.getImageUrl() : '';
+    }
 }

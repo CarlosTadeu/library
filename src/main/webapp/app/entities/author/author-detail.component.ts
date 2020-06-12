@@ -4,19 +4,19 @@ import { ActivatedRoute } from '@angular/router';
 import { IAuthor } from 'app/shared/model/author.model';
 
 @Component({
-  selector: 'jhi-author-detail',
-  templateUrl: './author-detail.component.html'
+    selector: 'jhi-author-detail',
+    templateUrl: './author-detail.component.html'
 })
 export class AuthorDetailComponent implements OnInit {
-  author: IAuthor | null = null;
+    author: IAuthor | null = null;
 
-  constructor(protected activatedRoute: ActivatedRoute) {}
+    constructor(protected activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ author }) => (this.author = author));
-  }
+    ngOnInit(): void {
+        this.activatedRoute.data.subscribe(({ author }) => (this.author = author));
+    }
 
-  previousState(): void {
-    window.history.back();
-  }
+    previousState(): void {
+        window.history.back();
+    }
 }

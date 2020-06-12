@@ -17,8 +17,6 @@ public class LibraryUserDTO implements Serializable {
 
     private String name;
 
-    private String username;
-
     private String address;
 
     private String email;
@@ -60,14 +58,6 @@ public class LibraryUserDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getAddress() {
@@ -138,7 +128,6 @@ public class LibraryUserDTO implements Serializable {
             ", cpf='" + getCpf() + "'" +
             ", rg='" + getRg() + "'" +
             ", name='" + getName() + "'" +
-            ", username='" + getUsername() + "'" +
             ", address='" + getAddress() + "'" +
             ", email='" + getEmail() + "'" +
             ", phoneNumber='" + getPhoneNumber() + "'" +

@@ -9,53 +9,53 @@ import { LibraryUserService } from 'app/entities/library-user/library-user.servi
 import { LibraryUser } from 'app/shared/model/library-user.model';
 
 describe('Component Tests', () => {
-  describe('LibraryUser Management Update Component', () => {
-    let comp: LibraryUserUpdateComponent;
-    let fixture: ComponentFixture<LibraryUserUpdateComponent>;
-    let service: LibraryUserService;
+    describe('LibraryUser Management Update Component', () => {
+        let comp: LibraryUserUpdateComponent;
+        let fixture: ComponentFixture<LibraryUserUpdateComponent>;
+        let service: LibraryUserService;
 
-    beforeEach(() => {
-      TestBed.configureTestingModule({
-        imports: [LibraryTestModule],
-        declarations: [LibraryUserUpdateComponent],
-        providers: [FormBuilder]
-      })
-        .overrideTemplate(LibraryUserUpdateComponent, '')
-        .compileComponents();
+        beforeEach(() => {
+            TestBed.configureTestingModule({
+                imports: [LibraryTestModule],
+                declarations: [LibraryUserUpdateComponent],
+                providers: [FormBuilder]
+            })
+                .overrideTemplate(LibraryUserUpdateComponent, '')
+                .compileComponents();
 
-      fixture = TestBed.createComponent(LibraryUserUpdateComponent);
-      comp = fixture.componentInstance;
-      service = fixture.debugElement.injector.get(LibraryUserService);
+            fixture = TestBed.createComponent(LibraryUserUpdateComponent);
+            comp = fixture.componentInstance;
+            service = fixture.debugElement.injector.get(LibraryUserService);
+        });
+
+        describe('save', () => {
+            it('Should call update service on save for existing entity', fakeAsync(() => {
+                // GIVEN
+                const entity = new LibraryUser(123);
+                spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
+                comp.updateForm(entity);
+                // WHEN
+                comp.save();
+                tick(); // simulate async
+
+                // THEN
+                expect(service.update).toHaveBeenCalledWith(entity);
+                expect(comp.isSaving).toEqual(false);
+            }));
+
+            it('Should call create service on save for new entity', fakeAsync(() => {
+                // GIVEN
+                const entity = new LibraryUser();
+                spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
+                comp.updateForm(entity);
+                // WHEN
+                comp.save();
+                tick(); // simulate async
+
+                // THEN
+                expect(service.create).toHaveBeenCalledWith(entity);
+                expect(comp.isSaving).toEqual(false);
+            }));
+        });
     });
-
-    describe('save', () => {
-      it('Should call update service on save for existing entity', fakeAsync(() => {
-        // GIVEN
-        const entity = new LibraryUser(123);
-        spyOn(service, 'update').and.returnValue(of(new HttpResponse({ body: entity })));
-        comp.updateForm(entity);
-        // WHEN
-        comp.save();
-        tick(); // simulate async
-
-        // THEN
-        expect(service.update).toHaveBeenCalledWith(entity);
-        expect(comp.isSaving).toEqual(false);
-      }));
-
-      it('Should call create service on save for new entity', fakeAsync(() => {
-        // GIVEN
-        const entity = new LibraryUser();
-        spyOn(service, 'create').and.returnValue(of(new HttpResponse({ body: entity })));
-        comp.updateForm(entity);
-        // WHEN
-        comp.save();
-        tick(); // simulate async
-
-        // THEN
-        expect(service.create).toHaveBeenCalledWith(entity);
-        expect(comp.isSaving).toEqual(false);
-      }));
-    });
-  });
 });

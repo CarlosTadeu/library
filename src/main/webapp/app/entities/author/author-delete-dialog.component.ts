@@ -6,21 +6,21 @@ import { IAuthor } from 'app/shared/model/author.model';
 import { AuthorService } from './author.service';
 
 @Component({
-  templateUrl: './author-delete-dialog.component.html'
+    templateUrl: './author-delete-dialog.component.html'
 })
 export class AuthorDeleteDialogComponent {
-  author?: IAuthor;
+    author?: IAuthor;
 
-  constructor(protected authorService: AuthorService, public activeModal: NgbActiveModal, protected eventManager: JhiEventManager) {}
+    constructor(protected authorService: AuthorService, public activeModal: NgbActiveModal, protected eventManager: JhiEventManager) {}
 
-  cancel(): void {
-    this.activeModal.dismiss();
-  }
+    cancel(): void {
+        this.activeModal.dismiss();
+    }
 
-  confirmDelete(id: number): void {
-    this.authorService.delete(id).subscribe(() => {
-      this.eventManager.broadcast('authorListModification');
-      this.activeModal.close();
-    });
-  }
+    confirmDelete(id: number): void {
+        this.authorService.delete(id).subscribe(() => {
+            this.eventManager.broadcast('authorListModification');
+            this.activeModal.close();
+        });
+    }
 }

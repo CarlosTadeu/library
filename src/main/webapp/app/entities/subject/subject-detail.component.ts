@@ -4,19 +4,19 @@ import { ActivatedRoute } from '@angular/router';
 import { ISubject } from 'app/shared/model/subject.model';
 
 @Component({
-  selector: 'jhi-subject-detail',
-  templateUrl: './subject-detail.component.html'
+    selector: 'jhi-subject-detail',
+    templateUrl: './subject-detail.component.html'
 })
 export class SubjectDetailComponent implements OnInit {
-  subject: ISubject | null = null;
+    subject: ISubject | null = null;
 
-  constructor(protected activatedRoute: ActivatedRoute) {}
+    constructor(protected activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ subject }) => (this.subject = subject));
-  }
+    ngOnInit(): void {
+        this.activatedRoute.data.subscribe(({ subject }) => (this.subject = subject));
+    }
 
-  previousState(): void {
-    window.history.back();
-  }
+    previousState(): void {
+        window.history.back();
+    }
 }

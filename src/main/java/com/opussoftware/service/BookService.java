@@ -14,6 +14,14 @@ import java.util.Optional;
 public interface BookService {
 
     /**
+     * Create a book.
+     *
+     * @param bookDTO the entity to save.
+     * @return the persisted entity.
+     */
+    BookDTO create(BookDTO bookDTO);
+
+    /**
      * Save a book.
      *
      * @param bookDTO the entity to save.

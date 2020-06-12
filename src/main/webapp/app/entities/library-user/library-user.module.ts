@@ -9,8 +9,8 @@ import { LibraryUserDeleteDialogComponent } from './library-user-delete-dialog.c
 import { libraryUserRoute } from './library-user.route';
 
 @NgModule({
-  imports: [LibrarySharedModule, RouterModule.forChild(libraryUserRoute)],
-  declarations: [LibraryUserComponent, LibraryUserDetailComponent, LibraryUserUpdateComponent, LibraryUserDeleteDialogComponent],
-  entryComponents: [LibraryUserDeleteDialogComponent]
+    imports: [LibrarySharedModule, RouterModule.forChild(libraryUserRoute)],
+    declarations: [LibraryUserComponent, LibraryUserDetailComponent, LibraryUserUpdateComponent, LibraryUserDeleteDialogComponent],
+    entryComponents: [LibraryUserDeleteDialogComponent]
 })
 export class LibraryLibraryUserModule {}

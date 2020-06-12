@@ -1,6 +1,7 @@
 package com.opussoftware.web.rest;
 
 import com.opussoftware.service.LibraryUserService;
+import com.opussoftware.service.dto.CopyBookDTO;
 import com.opussoftware.web.rest.errors.BadRequestAlertException;
 import com.opussoftware.service.dto.LibraryUserDTO;
 
@@ -95,6 +96,17 @@ public class LibraryUserResource {
         Page<LibraryUserDTO> page = libraryUserService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
+
+    /**
+     * {@code GET  /copy-books} : get all the libraryUsers without pagination.
+     *
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of libraryUsers in body.
+     */
+    @GetMapping("/library-users/all")
+    public List<LibraryUserDTO> getAllLibraryUsersWithoutPagination() {
+        log.debug("REST request to get all CopyBooks");
+        return libraryUserService.findAllWithoutPagination();
     }
 
     /**

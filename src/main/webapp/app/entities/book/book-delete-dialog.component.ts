@@ -6,21 +6,21 @@ import { IBook } from 'app/shared/model/book.model';
 import { BookService } from './book.service';
 
 @Component({
-  templateUrl: './book-delete-dialog.component.html'
+    templateUrl: './book-delete-dialog.component.html'
 })
 export class BookDeleteDialogComponent {
-  book?: IBook;
+    book?: IBook;
 
-  constructor(protected bookService: BookService, public activeModal: NgbActiveModal, protected eventManager: JhiEventManager) {}
+    constructor(protected bookService: BookService, public activeModal: NgbActiveModal, protected eventManager: JhiEventManager) {}
 
-  cancel(): void {
-    this.activeModal.dismiss();
-  }
+    cancel(): void {
+        this.activeModal.dismiss();
+    }
 
-  confirmDelete(id: number): void {
-    this.bookService.delete(id).subscribe(() => {
-      this.eventManager.broadcast('bookListModification');
-      this.activeModal.close();
-    });
-  }
+    confirmDelete(id: number): void {
+        this.bookService.delete(id).subscribe(() => {
+            this.eventManager.broadcast('bookListModification');
+            this.activeModal.close();
+        });
+    }
 }
