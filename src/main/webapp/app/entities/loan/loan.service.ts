@@ -9,6 +9,7 @@ import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared/util/request-util';
 import { ILoan } from 'app/shared/model/loan.model';
 import { ICopyBook } from 'app/shared/model/copy-book.model';
+import { ILoanCreate } from 'app/shared/model/loan-create.model';
 
 type EntityResponseType = HttpResponse<ILoan>;
 type EntityArrayResponseType = HttpResponse<ILoan[]>;
@@ -19,10 +20,9 @@ export class LoanService {
 
     constructor(protected http: HttpClient) {}
 
-    create(loan: ILoan): Observable<EntityResponseType> {
-        const copy = this.convertDateFromClient(loan);
+    create(loan: ILoanCreate): Observable<EntityResponseType> {
         return this.http
-            .post<ILoan>(this.resourceUrl, copy, { observe: 'response' })
+            .post<ILoan>(this.resourceUrl, loan, { observe: 'response' })
             .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
     }
 

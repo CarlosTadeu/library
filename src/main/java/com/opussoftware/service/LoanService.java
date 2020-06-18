@@ -1,6 +1,7 @@
 package com.opussoftware.service;
 
 import com.opussoftware.service.dto.CopyBookDTO;
+import com.opussoftware.service.dto.LoanCreateDTO;
 import com.opussoftware.service.dto.LoanDTO;
 
 import java.util.List;
@@ -30,10 +31,10 @@ public interface LoanService {
     /**
      * Create a loan.
      *
-     * @param loanDTO the entity to create.
+     * @param loanCreateDTO the entity to create.
      * @return the persisted entity
      */
-    LoanDTO create(LoanDTO loanDTO);
+    LoanDTO create(LoanCreateDTO loanCreateDTO);
 
     /**
      * Return a loan.

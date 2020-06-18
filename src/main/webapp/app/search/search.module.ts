@@ -5,6 +5,8 @@ import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
 import { SearchComponent } from 'app/search/search.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
     imports: [
@@ -18,7 +20,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
                 canActivate: [UserRouteAccessService]
             }
         ]),
-        FontAwesomeModule
+        FontAwesomeModule,
+        ReactiveFormsModule,
+        FormsModule,
+        CommonModule
     ],
     declarations: [SearchComponent]
 })

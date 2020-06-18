@@ -1,14 +1,15 @@
 package com.opussoftware.service.impl;
 
-import com.opussoftware.service.BookService;
 import com.opussoftware.domain.Book;
 import com.opussoftware.repository.BookRepository;
+import com.opussoftware.repository.CopyBookRepository;
+import com.opussoftware.service.BookService;
 import com.opussoftware.service.dto.BookDTO;
+import com.opussoftware.service.dto.SearchDTO;
 import com.opussoftware.service.mapper.BookMapper;
 import com.opussoftware.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -32,9 +33,12 @@ public class BookServiceImpl implements BookService {
 
     private final BookMapper bookMapper;
 
-    public BookServiceImpl(BookRepository bookRepository, BookMapper bookMapper) {
+    private final CopyBookRepository copyBookRepository;
+
+    public BookServiceImpl(BookRepository bookRepository, BookMapper bookMapper, CopyBookRepository copyBookRepository) {
         this.bookRepository = bookRepository;
         this.bookMapper = bookMapper;
+        this.copyBookRepository = copyBookRepository;
     }
 
     /**
@@ -113,5 +117,47 @@ public class BookServiceImpl implements BookService {
     public void delete(Long id) {
         log.debug("Request to delete Book : {}", id);
         bookRepository.deleteById(id);
+    }
+
+    /**
+     * Get all the books with option search.
+     *
+     * @return the list of entities.
+     */
+    @Override
+    public List<BookDTO> search(SearchDTO searchDTO) {
+        List<Book> books;
+
+        switch (searchDTO.getOption()) {
+            case "Title":
+                books = bookRepository.findAllByTitleContaining(searchDTO.getValue());
+                break;
+            case "Author":
+                books = bookRepository.findAllByAuthorsContaining(searchDTO.getValue());
+                break;
+            case "Subject":
+                String subject = searchDTO.getValue().replaceAll(" ", "_").toUpperCase();
+
+                books = bookRepository.findAllBySubjectsIsLike(subject);
+                break;
+            case "Publisher":
+                books = bookRepository.findAllByPublisherContaining(searchDTO.getValue());
+                break;
+            case "ISBN":
+                books = bookRepository.findAllByIsbnStartingWith(searchDTO.getValue());
+                break;
+            default:
+                throw new BadRequestAlertException("Unexpected value: " + searchDTO.getOption(), "BOOK", "unexpectedSearchOption");
+        }
+
+        List<BookDTO> dtoList = books.stream().map(bookMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+        dtoList.stream().forEach(bookDTO -> {
+            Book book = bookMapper.toEntity(bookDTO);
+            bookDTO.setTotalCopies(copyBookRepository.findTotalCopiesByBook(book));
+            bookDTO.setAvailableCopies(copyBookRepository.findAvailableCopiesByBook(book));
+        });
+
+        return dtoList;
     }
 }

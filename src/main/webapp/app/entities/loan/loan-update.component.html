@@ -1,29 +1,42 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-loan-heading">Create or edit a Loan</h2>
+            <h2 id="jhi-loan-heading">Create a Loan</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
 
-                <div class="form-group" [hidden]="!editForm.get('id')!.value">
-                    <label for="id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly/>
-                </div>
-
                 <div class="form-group">
-                    <label class="form-control-label" for="field_user">User</label>
-                    <input type="text" class="form-control" name="user" id="field_user"
-                           formControlName="userId" />
+                    <label class="form-control-label" for="field_user">User Cpf</label>
+                    <input type="text" class="form-control" name="userCpf" id="field_user"
+                           formControlName="userCpf" />
+
+                    <div
+                        *ngIf="editForm.get('userCpf')!.invalid && (editForm.get('userCpf')!.dirty || editForm.get('userCpf')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('userCpf')?.errors?.required">
+                            cpf is required.
+                        </small>
+
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('userCpf')?.getError('cpfNotValid')">
+                            cpf is not valid.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_copyBook">Copy Book</label>
-                    <select class="form-control" id="field_copyBook" name="copyBook" formControlName="copyBookId">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="copyBookOption.id"
-                                *ngFor="let copyBookOption of copybooks; trackBy: trackById">{{ copyBookOption.id }}</option>
-                    </select>
+                    <input type="text" class="form-control" id="field_copyBook" name="copyBook"
+                           formControlName="copyBookId">
+
+                    <div
+                        *ngIf="editForm.get('copyBookId')!.invalid && (editForm.get('copyBookId')!.dirty || editForm.get('copyBookId')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('copyBookId')?.errors?.required">
+                            Copy is required.
+                        </small>
+                    </div>
                 </div>
             </div>
 
@@ -37,6 +50,44 @@
                     <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
                 </button>
             </div>
+
+
+            <div class="table-responsive" id="entities" *ngIf="loan !== null">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                    <tr>
+                        <th scope="col"><span>ID</span></th>
+                        <th scope="col"><span>Loan Date</span></th>
+                        <th scope="col"><span>Date Returned</span></th>
+                        <th scope="col"><span>Date To Be Returned</span></th>
+                        <th scope="col"><span>Number Of Renewals</span></th>
+                        <th scope="col"><span>User</span></th>
+                        <th scope="col"><span>Copy Book</span></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a [routerLink]="['/loan', loan.id, 'view']">{{ loan.id }}</a></td>
+                        <td>{{ loan.loanDate | date:'mediumDate' }}</td>
+                        <td>{{ loan.dateReturned | date:'mediumDate' }}</td>
+                        <td>{{ loan.dateToBeReturned | date:'mediumDate' }}</td>
+                        <td>{{ loan.numberOfRenewals }}</td>
+                        <td>
+                            <div *ngIf="loan.userId">
+                                <a [routerLink]="['/library-user', loan.userId , 'view']">{{ loan.userId }}</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngIf="loan.copyBookId">
+                                <a [routerLink]="['/copy-book', loan.copyBookId , 'view']">{{ loan.copyBookId }}</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </form>
     </div>
 </div>

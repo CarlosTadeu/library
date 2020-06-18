@@ -2,6 +2,7 @@ package com.opussoftware.service;
 
 import com.opussoftware.service.dto.BookDTO;
 
+import com.opussoftware.service.dto.SearchDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -57,4 +58,11 @@ public interface BookService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    /**
+     * Get all the books with option search.
+     *
+     * @return the list of entities.
+     */
+    List<BookDTO> search(SearchDTO searchDTO);
 }

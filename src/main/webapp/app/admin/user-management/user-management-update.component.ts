@@ -12,6 +12,7 @@ import { UserService } from 'app/core/user/user.service';
 export class UserManagementUpdateComponent implements OnInit {
     user!: User;
     authorities: string[] = [];
+    value: string | undefined;
     isSaving = false;
 
     editForm = this.fb.group({
@@ -37,9 +38,9 @@ export class UserManagementUpdateComponent implements OnInit {
                 this.updateForm(user);
             }
         });
-        this.userService.authorities().subscribe(authorities => {
-            this.authorities = authorities;
-        });
+        // this.userService.authorities().subscribe(authorities => {
+        //     this.authorities = authorities;
+        // });
     }
 
     previousState(): void {
@@ -83,7 +84,7 @@ export class UserManagementUpdateComponent implements OnInit {
         user.email = this.editForm.get(['email'])!.value;
         user.activated = this.editForm.get(['activated'])!.value;
         user.langKey = this.editForm.get(['langKey'])!.value;
-        user.authorities = this.editForm.get(['authorities'])!.value;
+        user.authorities = this.convertAuthorities(this.editForm.get(['authorities'])!.value);
     }
 
     private onSaveSuccess(): void {
@@ -93,5 +94,16 @@ export class UserManagementUpdateComponent implements OnInit {
 
     private onSaveError(): void {
         this.isSaving = false;
+    }
+
+    private convertAuthorities(value: any): string[] {
+        switch (value) {
+            case 'Admin':
+                return ['ROLE_ADMIN'];
+            case 'Librarian':
+                return ['ROLE_LIBRARIAN'];
+            default:
+                return [''];
+        }
     }
 }

@@ -61,7 +61,7 @@
                 [routerLinkActiveOptions]="{ exact: true }">
                 <a *jhiHasAnyAuthority="['ROLE_LIBRARIAN']" class="nav-link" routerLink="library-user/new" (click)="collapseNavbar()">
                     <span>
-                        <fa-icon icon="th-list"></fa-icon>
+                        <fa-icon icon="user-plus"></fa-icon>
                         <span>
                             Create User
                         </span>
@@ -73,7 +73,7 @@
                 routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <a *jhiHasAnyAuthority="['ROLE_LIBRARIAN']" class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="option-loan">
                     <span>
-                        <fa-icon icon="th-list"></fa-icon>
+                        <fa-icon icon="address-book"></fa-icon>
                         <span>
                             Loan
                         </span>
@@ -83,14 +83,14 @@
                     <li>
                         <a class="dropdown-item" routerLink="loan/new" routerLinkActive="active"
                            [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <fa-icon icon="calendar-plus" fixedWidth="true"></fa-icon>
                             <span>Make Loan</span>
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item" routerLink="loan/return" routerLinkActive="active"
                            [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <fa-icon icon="calendar-minus" fixedWidth="true"></fa-icon>
                             <span>Make Devolution</span>
                         </a>
                     </li>
@@ -105,7 +105,7 @@
                     <span>
                         <fa-icon icon="th-list"></fa-icon>
                         <span>
-                            Admin
+                            Entities
                         </span>
                     </span>
                 </a>
@@ -244,13 +244,6 @@
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
                     <li *ngSwitchCase="true">
-                        <a class="dropdown-item" routerLink="account/settings" routerLinkActive="active"
-                           (click)="collapseNavbar()">
-                            <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
-                            <span>Settings</span>
-                        </a>
-                    </li>
-                    <li *ngSwitchCase="true">
                         <a class="dropdown-item" routerLink="account/password" routerLinkActive="active"
                            (click)="collapseNavbar()">
                             <fa-icon icon="lock" fixedWidth="true"></fa-icon>
@@ -267,14 +260,6 @@
                         <a class="dropdown-item" (click)="login()" id="login">
                             <fa-icon icon="sign-in-alt" fixedWidth="true"></fa-icon>
                             <span>Sign in</span>
-                        </a>
-                    </li>
-                    <li *ngSwitchCase="false">
-                        <a *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_LIBRARIAN']" class="dropdown-item"
-                           routerLink="account/register" routerLinkActive="active"
-                           (click)="collapseNavbar()">
-                            <fa-icon icon="user-plus" fixedWidth="true"></fa-icon>
-                            <span>Register</span>
                         </a>
                     </li>
                 </ul>

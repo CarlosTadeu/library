@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Resolve, ActivatedRouteSnapshot, Routes, Router } from '@angular/router';
-import { Observable, of, EMPTY } from 'rxjs';
+import { ActivatedRouteSnapshot, Resolve, Router, Routes } from '@angular/router';
+import { EMPTY, Observable, of } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 
 import { Authority } from 'app/shared/constants/authority.constants';
 import { UserRouteAccessService } from 'app/core/auth/user-route-access-service';
-import { IBook, Book } from 'app/shared/model/book.model';
+import { Book, IBook } from 'app/shared/model/book.model';
 import { BookService } from './book.service';
 import { BookComponent } from './book.component';
 import { BookDetailComponent } from './book-detail.component';
@@ -51,7 +51,7 @@ export const bookRoute: Routes = [
             book: BookResolve
         },
         data: {
-            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            authorities: [Authority.ADMIN, Authority.LIBRARIAN, Authority.USER],
             pageTitle: 'Books'
         },
         canActivate: [UserRouteAccessService]

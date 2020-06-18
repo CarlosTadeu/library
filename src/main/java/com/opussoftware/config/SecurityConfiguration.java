@@ -87,6 +87,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/loans/{id}").hasAnyAuthority(AuthoritiesConstants.ADMIN, AuthoritiesConstants.LIBRARIAN, AuthoritiesConstants.USER)
             .antMatchers("/api/loans/**").hasAnyAuthority(AuthoritiesConstants.ADMIN, AuthoritiesConstants.LIBRARIAN)
             .antMatchers("/api/authors/**").hasAnyAuthority(AuthoritiesConstants.ADMIN, AuthoritiesConstants.LIBRARIAN)
+            .antMatchers("/api/books/search/**").hasAnyAuthority(AuthoritiesConstants.ADMIN, AuthoritiesConstants.LIBRARIAN, AuthoritiesConstants.USER)
+            .antMatchers("/api/books/{id}").hasAnyAuthority(AuthoritiesConstants.ADMIN, AuthoritiesConstants.LIBRARIAN, AuthoritiesConstants.USER)
             .antMatchers("/api/books/**").hasAnyAuthority(AuthoritiesConstants.ADMIN, AuthoritiesConstants.LIBRARIAN)
             .antMatchers("/api/copy-books/**").hasAnyAuthority(AuthoritiesConstants.ADMIN, AuthoritiesConstants.LIBRARIAN)
             .antMatchers("/api/library-users/**").hasAnyAuthority(AuthoritiesConstants.ADMIN, AuthoritiesConstants.LIBRARIAN)

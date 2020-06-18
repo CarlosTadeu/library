@@ -1,5 +1,6 @@
 import {
     faUser,
+    faUserCircle,
     faSort,
     faSortUp,
     faSortDown,
@@ -20,6 +21,7 @@ import {
     faList,
     faBell,
     faBook,
+    faAddressBook,
     faHdd,
     faFlag,
     faWrench,
@@ -36,11 +38,16 @@ import {
     // jhipster-needle-add-icon-import
     faInfoCircle,
     faQuestion,
-    faQuestionCircle
+    faQuestionCircle,
+    faCalendarPlus,
+    faCalendarMinus
 } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = [
+    faCalendarPlus,
+    faCalendarMinus,
     faUser,
+    faUserCircle,
     faSort,
     faSortUp,
     faSortDown,
@@ -63,6 +70,7 @@ export const fontAwesomeIcons = [
     faBell,
     faTasks,
     faBook,
+    faAddressBook,
     faHdd,
     faFlag,
     faWrench,

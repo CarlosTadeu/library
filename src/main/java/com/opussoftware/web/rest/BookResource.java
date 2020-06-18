@@ -1,6 +1,7 @@
 package com.opussoftware.web.rest;
 
 import com.opussoftware.service.BookService;
+import com.opussoftware.service.dto.SearchDTO;
 import com.opussoftware.web.rest.errors.BadRequestAlertException;
 import com.opussoftware.service.dto.BookDTO;
 
@@ -87,6 +88,18 @@ public class BookResource {
     public List<BookDTO> getAllBooks(@RequestParam(required = false, defaultValue = "false") boolean eagerload) {
         log.debug("REST request to get all Books");
         return bookService.findAll();
+    }
+
+    /**
+     * {@code PUT  /books/search/} : get all the books with option search.
+     *
+     * @param searchDTO the searchDTO of the search
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of books in body.
+     */
+    @PutMapping("/books/search/")
+    public List<BookDTO> search(@RequestBody SearchDTO searchDTO) {
+        log.debug("REST request to search books by : {}", searchDTO.getOption());
+        return bookService.search(searchDTO);
     }
 
     /**

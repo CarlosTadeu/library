@@ -1,4 +1,3 @@
-import { ICopyBook } from 'app/shared/model/copy-book.model';
 import { ISubject } from 'app/shared/model/subject.model';
 import { IAuthor } from 'app/shared/model/author.model';
 
@@ -8,7 +7,9 @@ export interface IBook {
     title?: string;
     publisher?: string;
     publicationYear?: number;
-    copyBooks?: ICopyBook[];
+    totalCopies?: number;
+    availableCopies?: number;
+    // copyBooks?: ICopyBook[];
     subjects?: ISubject[];
     authors?: IAuthor[];
 }
@@ -20,7 +21,9 @@ export class Book implements IBook {
         public title?: string,
         public publisher?: string,
         public publicationYear?: number,
-        public copyBooks?: ICopyBook[],
+        public totalCopies?: number,
+        public availableCopies?: number,
+        // public copyBooks?: ICopyBook[],
         public subjects?: ISubject[],
         public authors?: IAuthor[]
     ) {}

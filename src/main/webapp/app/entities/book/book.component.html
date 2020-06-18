@@ -41,16 +41,16 @@
                 <td>{{ book.publisher }}</td>
                 <td>{{ book.publicationYear }}</td>
                 <td>
-                        <span *ngFor="let subjects of book.subjects; let last = last">
-                            <a class="form-control-static"
-                               [routerLink]="['/subject', subjects?.id, 'view']">{{ subjects.id }}</a>{{ last ? '' : ', ' }}
-                        </span>
+                    <span *ngFor="let subjects of book.subjects; let last = last">
+                        <a class="form-control-static"
+                           [routerLink]="['/subject', subjects?.id, 'view']">{{ subjects.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
                 </td>
                 <td>
-                        <span *ngFor="let authors of book.authors; let last = last">
-                            <a class="form-control-static"
-                               [routerLink]="['/author', authors?.id, 'view']">{{ authors.id }}</a>{{ last ? '' : ', ' }}
-                        </span>
+                    <span *ngFor="let authors of book.authors; let last = last">
+                        <a class="form-control-static"
+                           [routerLink]="['/author', authors?.id, 'view']">{{ authors.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
                 </td>
                 <td class="text-right">
                     <div class="btn-group">

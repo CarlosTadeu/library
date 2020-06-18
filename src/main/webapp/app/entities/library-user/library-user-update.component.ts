@@ -9,6 +9,7 @@ import { ILibraryUser, LibraryUser } from 'app/shared/model/library-user.model';
 import { LibraryUserService } from './library-user.service';
 import { IStudentType } from 'app/shared/model/student-type.model';
 import { StudentTypeService } from 'app/entities/student-type/student-type.service';
+import { CpfValidator } from 'app/shared/util/cpf-validator';
 
 @Component({
     selector: 'jhi-library-user-update',
@@ -20,11 +21,11 @@ export class LibraryUserUpdateComponent implements OnInit {
 
     editForm = this.fb.group({
         id: [],
-        cpf: [],
-        rg: [],
+        cpf: ['', [Validators.required, Validators.minLength(11), Validators.maxLength(11), CpfValidator.isValidCpf()]],
+        rg: ['', [Validators.required]],
         name: [],
         address: [],
-        email: [],
+        email: ['', [Validators.email, Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
         phoneNumber: [],
         suspensionDate: [],
         studentTypeId: []
@@ -86,6 +87,31 @@ export class LibraryUserUpdateComponent implements OnInit {
             suspensionDate: this.editForm.get(['suspensionDate'])!.value,
             studentTypeId: this.editForm.get(['studentTypeId'])!.value
         };
+    }
+
+    returnStudentType(item: IStudentType): string {
+        switch (item.studentType) {
+            case 'GRADUATE_STUDENT': {
+                return 'Graduate Student';
+                break;
+            }
+            case 'TEACHER': {
+                return 'Teacher';
+                break;
+            }
+            case 'POSTGRADUATE_STUDENT': {
+                return 'Postgraduate Student';
+                break;
+            }
+            case 'DISTANCE_STUDENT': {
+                return 'Distance Student';
+                break;
+            }
+            default: {
+                return 'default';
+                break;
+            }
+        }
     }
 
     protected subscribeToSaveResponse(result: Observable<HttpResponse<ILibraryUser>>): void {

@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -57,15 +58,13 @@ public class LibraryUserServiceImpl implements LibraryUserService {
         userDTO.setFirstName(name.substring(0, name.lastIndexOf(' ')));
         userDTO.setLastName(name.substring(name.lastIndexOf(" ") + 1));
         userDTO.setEmail(libraryUser.getEmail());
-        userDTO.setLogin(libraryUser.getRg());
-        userDTO.setCreatedBy(SecurityUtils.getCurrentUserLogin().toString());
+        userDTO.setLogin(libraryUser.getCpf());
 
-        userService.createUser(userDTO, libraryUser.getCpf());
+        userService.createUser(userDTO, libraryUser.getRg());
 
         libraryUser = libraryUserRepository.save(libraryUser);
         return libraryUserMapper.toDto(libraryUser);
     }
-
 
     /**
      * Get all the libraryUsers.

@@ -2,6 +2,7 @@ package com.opussoftware.web.rest;
 
 import com.opussoftware.service.LoanService;
 import com.opussoftware.service.dto.CopyBookDTO;
+import com.opussoftware.service.dto.LoanCreateDTO;
 import com.opussoftware.service.dto.LoanDTO;
 import com.opussoftware.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.web.util.HeaderUtil;
@@ -40,17 +41,14 @@ public class LoanResource {
     /**
      * {@code POST  /loans} : Create a new loan.
      *
-     * @param loanDTO the loanDTO to create.
+     * @param loanCreateDTO the loanDTO to create.
      * @return the {@link ResponseEntity} with status {@code 201 (Created)} and with body the new loanDTO, or with status {@code 400 (Bad Request)} if the loan has already an ID.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/loans")
-    public ResponseEntity<LoanDTO> createLoan(@RequestBody LoanDTO loanDTO) throws URISyntaxException {
-        log.debug("REST request to save Loan : {}", loanDTO);
-        if (loanDTO.getId() != null) {
-            throw new BadRequestAlertException("A new loan cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        LoanDTO result = loanService.create(loanDTO);
+    public ResponseEntity<LoanDTO> createLoan(@RequestBody LoanCreateDTO loanCreateDTO) throws URISyntaxException {
+        log.debug("REST request to save Loan : {}", loanCreateDTO);
+        LoanDTO result = loanService.create(loanCreateDTO);
         return ResponseEntity.created(new URI("/api/loans/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
             .body(result);

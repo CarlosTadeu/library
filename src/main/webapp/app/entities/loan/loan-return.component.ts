@@ -9,7 +9,6 @@ import { ILoan } from 'app/shared/model/loan.model';
 import { LoanService } from './loan.service';
 import { ILibraryUser } from 'app/shared/model/library-user.model';
 import { ICopyBook, CopyBook } from 'app/shared/model/copy-book.model';
-import { CopyBookService } from 'app/entities/copy-book/copy-book.service';
 
 type SelectableEntity = ILibraryUser | ICopyBook;
 
@@ -26,12 +25,7 @@ export class LoanReturnComponent implements OnInit {
         bookId: []
     });
 
-    constructor(
-        protected loanService: LoanService,
-        protected copyBookService: CopyBookService,
-        protected activatedRoute: ActivatedRoute,
-        private fb: FormBuilder
-    ) {}
+    constructor(protected loanService: LoanService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
     ngOnInit(): void {
         this.activatedRoute.data.subscribe(({ copyBook }) => {

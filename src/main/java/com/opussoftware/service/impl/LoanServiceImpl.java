@@ -1,6 +1,5 @@
 package com.opussoftware.service.impl;
 
-import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
 import com.opussoftware.domain.CopyBook;
 import com.opussoftware.domain.LibraryUser;
 import com.opussoftware.domain.Loan;
@@ -11,6 +10,7 @@ import com.opussoftware.security.DomainUserDetailsService;
 import com.opussoftware.security.SecurityUtils;
 import com.opussoftware.service.LoanService;
 import com.opussoftware.service.dto.CopyBookDTO;
+import com.opussoftware.service.dto.LoanCreateDTO;
 import com.opussoftware.service.dto.LoanDTO;
 import com.opussoftware.service.mapper.LoanMapper;
 import com.opussoftware.web.rest.errors.BadRequestAlertException;
@@ -44,31 +44,28 @@ public class LoanServiceImpl implements LoanService {
 
     private final CopyBookRepository copyBookRepository;
 
-    private final DomainUserDetailsService domainUserDetailsService;
-
     public LoanServiceImpl(LoanRepository loanRepository, LoanMapper loanMapper, LibraryUserRepository libraryUserRepository, CopyBookRepository copyBookRepository, DomainUserDetailsService domainUserDetailsService) {
         this.loanRepository = loanRepository;
         this.loanMapper = loanMapper;
         this.libraryUserRepository = libraryUserRepository;
         this.copyBookRepository = copyBookRepository;
-        this.domainUserDetailsService = domainUserDetailsService;
     }
 
     /**
      * Create a loan.
      *
-     * @param loanDTO the entity to create.
+     * @param loanCreateDTO the entity to create.
      * @return the persisted entity
      */
     @Override
-    public LoanDTO create(LoanDTO loanDTO) {
-        LibraryUser libraryUser = libraryUserRepository.findById(loanDTO.getUserId())
-            .orElseThrow(() -> new BadRequestAlertException("Library User not found", "loan", "usernotfound"));
+    public LoanDTO create(LoanCreateDTO loanCreateDTO) {
+        LibraryUser libraryUser = libraryUserRepository.findByCpf(loanCreateDTO.getUserCpf())
+            .orElseThrow(() -> new BadRequestAlertException("Library User not found", "loan", "userNotFound"));
 
-        CopyBook copyBook = copyBookRepository.findById(loanDTO.getCopyBookId())
-            .orElseThrow(() -> new BadRequestAlertException("Copy book not found", "loan", "copybooknotfound"));
-        if (!copyBook.getAvailable())
-            throw new BadRequestAlertException("Copy is already on loan", "loan", "copyonloan");
+        CopyBook copyBook = copyBookRepository.findById(loanCreateDTO.getCopyBookId())
+            .orElseThrow(() -> new BadRequestAlertException("Copy book not found", "loan", "copyBookNotFound"));
+        if (copyBook.getAvailable() == false)
+            throw new BadRequestAlertException("Copy is already on loan", "loan", "CopyOnLoan");
 
         userIsValidForLoan(libraryUser);
 
