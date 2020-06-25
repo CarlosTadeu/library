@@ -10,6 +10,7 @@ import com.opussoftware.security.DomainUserDetailsService;
 import com.opussoftware.security.SecurityUtils;
 import com.opussoftware.service.LoanService;
 import com.opussoftware.service.dto.CopyBookDTO;
+import com.opussoftware.service.dto.FilterDTO;
 import com.opussoftware.service.dto.LoanCreateDTO;
 import com.opussoftware.service.dto.LoanDTO;
 import com.opussoftware.service.mapper.LoanMapper;
@@ -212,6 +213,26 @@ public class LoanServiceImpl implements LoanService {
        return loanRepository.findAllByUser(currentUser).stream()
            .map(loanMapper::toDto)
            .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    @Override
+    public List<LoanDTO> findAllByFilter(FilterDTO filterDTO) {
+        List<Loan> loans;
+
+        switch (filterDTO.getOption()) {
+            case "User":
+                loans = loanRepository.findAllByUser_Id(filterDTO.getValue());
+                break;
+            case "Copy Book":
+                loans = loanRepository.findAllByCopyBook_Id(filterDTO.getValue());
+                break;
+            default:
+                throw new BadRequestAlertException("Unexpected value: " + filterDTO.getOption(), "LOAN", "unexpectedSearchOption");
+        }
+
+        List<LoanDTO> dtoList = loans.stream().map(loanMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+        return dtoList;
     }
 
     /**

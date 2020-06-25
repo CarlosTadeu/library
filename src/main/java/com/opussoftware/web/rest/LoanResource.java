@@ -1,9 +1,7 @@
 package com.opussoftware.web.rest;
 
 import com.opussoftware.service.LoanService;
-import com.opussoftware.service.dto.CopyBookDTO;
-import com.opussoftware.service.dto.LoanCreateDTO;
-import com.opussoftware.service.dto.LoanDTO;
+import com.opussoftware.service.dto.*;
 import com.opussoftware.web.rest.errors.BadRequestAlertException;
 import io.github.jhipster.web.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -150,6 +148,12 @@ public class LoanResource {
         log.debug("REST request to get Loan : {}", id);
         Optional<LoanDTO> loanDTO = loanService.findOne(id);
         return ResponseUtil.wrapOrNotFound(loanDTO);
+    }
+
+    @PutMapping("/loans/filter")
+    public List<LoanDTO> filterLoan(@RequestBody FilterDTO filterDTO) {
+        log.debug("REST request to filter loans by : {}", filterDTO.getOption());
+        return loanService.findAllByFilter(filterDTO);
     }
 
     /**

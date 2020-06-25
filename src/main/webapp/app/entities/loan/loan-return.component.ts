@@ -17,12 +17,11 @@ type SelectableEntity = ILibraryUser | ICopyBook;
     templateUrl: './loan-return.component.html'
 })
 export class LoanReturnComponent implements OnInit {
+    loan: ILoan | null = null;
     isSaving = false;
 
     editForm = this.fb.group({
-        id: [],
-        available: true,
-        bookId: []
+        id: ['', [Validators.required]]
     });
 
     constructor(protected loanService: LoanService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -35,8 +34,7 @@ export class LoanReturnComponent implements OnInit {
 
     updateForm(copyBook: ICopyBook): void {
         this.editForm.patchValue({
-            id: copyBook.id,
-            available: copyBook.available
+            id: copyBook.id
         });
     }
 
@@ -53,15 +51,16 @@ export class LoanReturnComponent implements OnInit {
     private createFromForm(): ICopyBook {
         return {
             ...new CopyBook(),
-            id: this.editForm.get(['id'])!.value,
-            available: this.editForm.get(['available'])!.value,
-            bookId: this.editForm.get(['bookId'])!.value
+            id: this.editForm.get(['id'])!.value
         };
     }
 
     protected subscribeToSaveResponse(result: Observable<HttpResponse<ILoan>>): void {
         result.subscribe(
-            () => this.onSaveSuccess(),
+            (res: HttpResponse<ILoan>) => {
+                this.loan = res.body || null;
+                this.isSaving = false;
+            },
             () => this.onSaveError()
         );
     }
@@ -73,9 +72,5 @@ export class LoanReturnComponent implements OnInit {
 
     protected onSaveError(): void {
         this.isSaving = false;
-    }
-
-    trackById(index: number, item: SelectableEntity): any {
-        return item.id;
     }
 }

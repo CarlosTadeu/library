@@ -1,8 +1,6 @@
 package com.opussoftware.service;
 
-import com.opussoftware.service.dto.CopyBookDTO;
-import com.opussoftware.service.dto.LoanCreateDTO;
-import com.opussoftware.service.dto.LoanDTO;
+import com.opussoftware.service.dto.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -72,4 +70,6 @@ public interface LoanService {
      * @return the list of entities.
      */
     List<LoanDTO> findAllByUser();
+
+    List<LoanDTO> findAllByFilter(FilterDTO filterDTO);
 }

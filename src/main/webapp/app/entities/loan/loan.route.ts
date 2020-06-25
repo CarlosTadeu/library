@@ -90,7 +90,7 @@ export const loanRoute: Routes = [
             loan: LoanResolve
         },
         data: {
-            authorities: [Authority.ADMIN, Authority.LIBRARIAN],
+            authorities: [Authority.ADMIN],
             pageTitle: 'Loans'
         },
         canActivate: [UserRouteAccessService]

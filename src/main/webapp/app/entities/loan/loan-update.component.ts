@@ -45,6 +45,13 @@ export class LoanUpdateComponent implements OnInit {
         };
     }
 
+    updateForm(loanCreate: ILoanCreate): void {
+        this.editForm.patchValue({
+            userCpf: loanCreate.userCpf,
+            copyBookId: loanCreate.copyBookId
+        });
+    }
+
     protected subscribeToSaveResponse(result: Observable<HttpResponse<ILoan>>): void {
         result.subscribe(
             (res: HttpResponse<ILoan>) => {
@@ -57,7 +64,7 @@ export class LoanUpdateComponent implements OnInit {
 
     protected onSaveSuccess(): void {
         this.isSaving = false;
-        // this.previousState();
+        this.previousState();
     }
 
     protected onSaveError(): void {

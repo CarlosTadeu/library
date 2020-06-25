@@ -11,6 +11,14 @@
                     <input type="text" class="form-control" name="copyBook" id="field_copyBook"
                            formControlName="id" />
                 </div>
+
+                <div
+                    *ngIf="editForm.get('id')!.invalid && (editForm.get('id')!.dirty || editForm.get('id')!.touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('id')?.errors?.required">
+                        Copy Book ID is required.
+                    </small>
+                </div>
             </div>
 
             <div>
@@ -23,6 +31,43 @@
                     <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
                 </button>
             </div>
+
+            <div class="table-responsive" id="entities" *ngIf="loan !== null">
+                <table class="table table-striped" aria-describedby="page-heading">
+                    <thead>
+                    <tr>
+                        <th scope="col"><span>ID</span></th>
+                        <th scope="col"><span>Loan Date</span></th>
+                        <th scope="col"><span>Date Returned</span></th>
+                        <th scope="col"><span>Date To Be Returned</span></th>
+                        <th scope="col"><span>Number Of Renewals</span></th>
+                        <th scope="col"><span>User</span></th>
+                        <th scope="col"><span>Copy Book</span></th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><a [routerLink]="['/loan', loan.id, 'view']">{{ loan.id }}</a></td>
+                        <td>{{ loan.loanDate | date:'mediumDate' }}</td>
+                        <td>{{ loan.dateReturned | date:'mediumDate' }}</td>
+                        <td>{{ loan.dateToBeReturned | date:'mediumDate' }}</td>
+                        <td>{{ loan.numberOfRenewals }}</td>
+                        <td>
+                            <div *ngIf="loan.userId">
+                                <a [routerLink]="['/library-user', loan.userId , 'view']">{{ loan.userId }}</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngIf="loan.copyBookId">
+                                <a [routerLink]="['/copy-book', loan.copyBookId , 'view']">{{ loan.copyBookId }}</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </form>
     </div>
 </div>

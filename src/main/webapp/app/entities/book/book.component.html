@@ -11,6 +11,54 @@
         </button>
     </h2>
 
+    <div class="row">
+        <div class="col-md-5">
+            <h4>Filters</h4>
+
+            <div class="input-group mb-3">
+                <select class="form-control" name="typeSearch" [(ngModel)]="option">
+                    <option></option>
+                    <option>Title</option>
+                    <option>Author</option>
+                    <option>Subject</option>
+                    <option>Publisher</option>
+                    <option>ISBN</option>
+                </select>
+
+                <input *ngIf="option != 'Subject'" type="search" class="form-control" name="value"
+                       [(ngModel)]="value"/>
+
+                <select *ngIf="option === 'Subject'" class="form-control" name="value" [(ngModel)]="value">
+                    <option>Computing</option>
+                    <option>Humanities</option>
+                    <option>Science</option>
+                    <option>Mathematics</option>
+                    <option>Social Sciences</option>
+                    <option>Languages</option>
+                    <option>Engineering</option>
+                    <option>Miscellaneous</option>
+                </select>
+
+                <div class="input-group-append">
+                    <button type="submit" [disabled]="option === '' || value === ''"
+                            (click)="search()"
+                            class="btn btn-outline-secondary">
+                        <fa-icon icon="book"></fa-icon>
+                        <span>Search</span>
+                    </button>
+                </div>
+
+            </div>
+            <button type="button"
+                    (click)="loadAll()"
+                    class="btn btn-outline-dark">
+                <fa-icon icon="book"></fa-icon>
+                <span>Search All</span>
+            </button>
+        </div>
+
+    </div>
+
     <jhi-alert-error></jhi-alert-error>
 
     <jhi-alert></jhi-alert>

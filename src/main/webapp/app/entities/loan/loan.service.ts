@@ -10,6 +10,7 @@ import { createRequestOption } from 'app/shared/util/request-util';
 import { ILoan } from 'app/shared/model/loan.model';
 import { ICopyBook } from 'app/shared/model/copy-book.model';
 import { ILoanCreate } from 'app/shared/model/loan-create.model';
+import { IFilter } from 'app/shared/model/filter.model';
 
 type EntityResponseType = HttpResponse<ILoan>;
 type EntityArrayResponseType = HttpResponse<ILoan[]>;
@@ -57,6 +58,13 @@ export class LoanService {
         const options = createRequestOption(req);
         return this.http
             .get<ILoan[]>(`${this.resourceUrl}/${'user'}`, { params: options, observe: 'response' })
+            .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
+    }
+
+    filter(filter: IFilter, req?: any): Observable<EntityArrayResponseType> {
+        const options = createRequestOption(req);
+        return this.http
+            .put<ILoan[]>(`${this.resourceUrl}/${'filter'}`, filter, { params: options, observe: 'response' })
             .pipe(map((res: EntityArrayResponseType) => this.convertDateArrayFromServer(res)));
     }
 

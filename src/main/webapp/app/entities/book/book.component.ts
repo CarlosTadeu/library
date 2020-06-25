@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { IBook } from 'app/shared/model/book.model';
 import { BookService } from './book.service';
 import { BookDeleteDialogComponent } from './book-delete-dialog.component';
+import { ISearch, Search } from 'app/shared/model/search.model';
 
 @Component({
     selector: 'jhi-book',
@@ -15,6 +16,9 @@ import { BookDeleteDialogComponent } from './book-delete-dialog.component';
 export class BookComponent implements OnInit, OnDestroy {
     books?: IBook[];
     eventSubscriber?: Subscription;
+    option = '';
+    value = '';
+    totalItems = 0;
 
     constructor(protected bookService: BookService, protected eventManager: JhiEventManager, protected modalService: NgbModal) {}
 
@@ -45,5 +49,29 @@ export class BookComponent implements OnInit, OnDestroy {
     delete(book: IBook): void {
         const modalRef = this.modalService.open(BookDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
         modalRef.componentInstance.book = book;
+    }
+
+    canLoad(): boolean {
+        return this.option !== '' && this.value !== '';
+    }
+
+    private createSearch(): ISearch {
+        return {
+            ...new Search(),
+            option: this.option,
+            value: this.value
+        };
+    }
+
+    search(): void {
+        if (this.canLoad()) {
+            const search = this.createSearch();
+            this.bookService.search(search).subscribe((res: HttpResponse<IBook[]>) => this.onSuccess(res.body, res.headers));
+        }
+    }
+
+    private onSuccess(books: IBook[] | null, headers: HttpHeaders): void {
+        this.totalItems = Number(headers.get('X-Total-Count'));
+        this.books = books || [];
     }
 }

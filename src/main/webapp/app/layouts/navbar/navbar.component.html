@@ -71,7 +71,7 @@
 
             <li ngbDropdown class="nav-item dropdown pointer" display="dynamic"
                 routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <a *jhiHasAnyAuthority="['ROLE_LIBRARIAN']" class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="option-loan">
+                <a *jhiHasAnyAuthority="['ROLE_LIBRARIAN', 'ROLE_ADMIN']" class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="option-loan">
                     <span>
                         <fa-icon icon="address-book"></fa-icon>
                         <span>

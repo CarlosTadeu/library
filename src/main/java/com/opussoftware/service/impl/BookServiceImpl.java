@@ -1,8 +1,11 @@
 package com.opussoftware.service.impl;
 
+import com.opussoftware.domain.Author;
 import com.opussoftware.domain.Book;
+import com.opussoftware.repository.AuthorRepository;
 import com.opussoftware.repository.BookRepository;
 import com.opussoftware.repository.CopyBookRepository;
+import com.opussoftware.repository.SubjectRepository;
 import com.opussoftware.service.BookService;
 import com.opussoftware.service.dto.BookDTO;
 import com.opussoftware.service.dto.SearchDTO;
@@ -35,10 +38,16 @@ public class BookServiceImpl implements BookService {
 
     private final CopyBookRepository copyBookRepository;
 
-    public BookServiceImpl(BookRepository bookRepository, BookMapper bookMapper, CopyBookRepository copyBookRepository) {
+    private final AuthorRepository authorRepository;
+
+    private final SubjectRepository subjectRepository;
+
+    public BookServiceImpl(BookRepository bookRepository, BookMapper bookMapper, CopyBookRepository copyBookRepository, AuthorRepository authorRepository, SubjectRepository subjectRepository) {
         this.bookRepository = bookRepository;
         this.bookMapper = bookMapper;
         this.copyBookRepository = copyBookRepository;
+        this.authorRepository = authorRepository;
+        this.subjectRepository = subjectRepository;
     }
 
     /**
@@ -51,7 +60,7 @@ public class BookServiceImpl implements BookService {
     public BookDTO create(BookDTO bookDTO) {
         log.debug("Request to create Book : {}", bookDTO);
 
-        if(bookRepository.existsBooksByIsbn(bookDTO.getIsbn()))
+        if (bookRepository.existsBooksByIsbn(bookDTO.getIsbn()))
             throw new BadRequestAlertException("Isbn already exists", "book", "isbnexists");
 
         return save(bookDTO);
@@ -133,12 +142,14 @@ public class BookServiceImpl implements BookService {
                 books = bookRepository.findAllByTitleContaining(searchDTO.getValue());
                 break;
             case "Author":
-                books = bookRepository.findAllByAuthorsContaining(searchDTO.getValue());
+                books = new LinkedList<>();
+                List<Author> authors = authorRepository.findAllByNameContaining(searchDTO.getValue());
+                for (Author author : authors)
+                    books.addAll(bookRepository.findAllByAuthorsIsContaining(author));
                 break;
             case "Subject":
                 String subject = searchDTO.getValue().replaceAll(" ", "_").toUpperCase();
-
-                books = bookRepository.findAllBySubjectsIsLike(subject);
+                books = bookRepository.findAllBySubjectsIsContaining(subjectRepository.findBySubjectIsLike(subject));
                 break;
             case "Publisher":
                 books = bookRepository.findAllByPublisherContaining(searchDTO.getValue());
@@ -157,7 +168,6 @@ public class BookServiceImpl implements BookService {
             bookDTO.setTotalCopies(copyBookRepository.findTotalCopiesByBook(book));
             bookDTO.setAvailableCopies(copyBookRepository.findAvailableCopiesByBook(book));
         });
-
         return dtoList;
     }
 }

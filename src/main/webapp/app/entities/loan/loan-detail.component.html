@@ -10,15 +10,15 @@
             <dl class="row-md jh-entity-details">
                 <dt><span>Loan Date</span></dt>
                 <dd>
-                    <span>{{ loan.loanDate }}</span>
+                    <span>{{ loan.loanDate | date:'mediumDate' }}</span>
                 </dd>
                 <dt><span>Date Returned</span></dt>
                 <dd>
-                    <span>{{ loan.dateReturned }}</span>
+                    <span>{{ loan.dateReturned | date:'mediumDate' }}</span>
                 </dd>
                 <dt><span>Date To Be Returned</span></dt>
                 <dd>
-                    <span>{{ loan.dateToBeReturned }}</span>
+                    <span>{{ loan.dateToBeReturned | date:'mediumDate' }}</span>
                 </dd>
                 <dt><span>Number Of Renewals</span></dt>
                 <dd>
@@ -44,7 +44,8 @@
                 <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
             </button>
 
-            <button type="button"
+            <button *jhiHasAnyAuthority="['ROLE_ADMIN']"
+                    type="button"
                     [routerLink]="['/loan', loan.id, 'edit']"
                     class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>

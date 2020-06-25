@@ -11,6 +11,26 @@
         </button>
     </h2>
 
+    <div class="row">
+        <div class="col-md-5">
+            <h4>Filters</h4>
+
+            <div class="input-group mb-3">
+                <select class="form-control" name="typeSearch" [(ngModel)]="option">
+                    <option></option>
+                    <option>User</option>
+                    <option>Copy Book</option>
+                </select>
+                <input type="text" class="form-control" name="user" [(ngModel)]="value"/>
+                <div class="input-group-append">
+                    <button (click)="search()" [disabled]="option === '' || value === undefined"
+                            class="btn btn-outline-secondary" type="button">Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <jhi-alert-error></jhi-alert-error>
 
     <jhi-alert></jhi-alert>
@@ -59,14 +79,16 @@
                             <span class="d-none d-md-inline">View</span>
                         </button>
 
-                        <button type="submit"
+                        <button *jhiHasAnyAuthority="['ROLE_ADMIN']"
+                                type="submit"
                                 [routerLink]="['/loan', loan.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon icon="pencil-alt"></fa-icon>
                             <span class="d-none d-md-inline">Edit</span>
                         </button>
 
-                        <button type="submit" (click)="delete(loan)"
+                        <button *jhiHasAnyAuthority="['ROLE_ADMIN']"
+                                type="submit" (click)="delete(loan)"
                                 class="btn btn-danger btn-sm">
                             <fa-icon icon="times"></fa-icon>
                             <span class="d-none d-md-inline">Delete</span>

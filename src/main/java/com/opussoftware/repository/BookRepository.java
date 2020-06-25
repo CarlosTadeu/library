@@ -1,7 +1,9 @@
 package com.opussoftware.repository;
 
+import com.opussoftware.domain.Author;
 import com.opussoftware.domain.Book;
 
+import com.opussoftware.domain.Subject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
@@ -30,9 +32,10 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 //    @Query("select distinct book from Book book left join fetch book.subjects left join fetch book.authors where book.title like %:title%")
     List<Book> findAllByTitleContaining(String title);
 
-    List<Book> findAllByAuthorsContaining(String author);
+//    @Query("select distinct book from Book book left join fetch book.subjects left join fetch book.authors where book.authors like %:title%")
+    List<Book> findAllByAuthorsIsContaining(Author author);
 
-    List<Book> findAllBySubjectsIsLike(String subject);
+    List<Book> findAllBySubjectsIsContaining(Subject subject);
 
     List<Book> findAllByPublisherContaining(String publisher);
 

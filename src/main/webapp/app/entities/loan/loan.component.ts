@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
+import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { JhiEventManager } from 'ng-jhipster';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ILoan } from 'app/shared/model/loan.model';
 import { LoanService } from './loan.service';
 import { LoanDeleteDialogComponent } from './loan-delete-dialog.component';
+import { Filter, IFilter } from 'app/shared/model/filter.model';
 
 @Component({
     selector: 'jhi-loan',
@@ -15,6 +16,9 @@ import { LoanDeleteDialogComponent } from './loan-delete-dialog.component';
 export class LoanComponent implements OnInit, OnDestroy {
     loans?: ILoan[];
     eventSubscriber?: Subscription;
+    option = '';
+    value: number | undefined;
+    totalItems = 0;
 
     constructor(protected loanService: LoanService, protected eventManager: JhiEventManager, protected modalService: NgbModal) {}
 
@@ -36,6 +40,30 @@ export class LoanComponent implements OnInit, OnDestroy {
     trackId(index: number, item: ILoan): number {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
         return item.id!;
+    }
+
+    canLoad(): boolean {
+        return this.option !== '' && this.value !== undefined;
+    }
+
+    private createLoanFilter(): IFilter {
+        return {
+            ...new Filter(),
+            option: this.option,
+            value: this.value
+        };
+    }
+
+    search(): void {
+        if (this.canLoad()) {
+            const search = this.createLoanFilter();
+            this.loanService.filter(search).subscribe((res: HttpResponse<ILoan[]>) => this.onSuccess(res.body, res.headers));
+        }
+    }
+
+    private onSuccess(loans: ILoan[] | null, headers: HttpHeaders): void {
+        this.totalItems = Number(headers.get('X-Total-Count'));
+        this.loans = loans || [];
     }
 
     registerChangeInLoans(): void {
