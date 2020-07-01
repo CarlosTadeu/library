@@ -1,0 +1,59 @@
+<div>
+    <h2 id="page-heading">
+        <span>Loans</span>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="loans?.length === 0">
+        <span>No loans found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="loans?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+                <th scope="col"><span>ID</span></th>
+                <th scope="col"><span>Loan Date</span></th>
+                <th scope="col"><span>Date Returned</span></th>
+                <th scope="col"><span>Date To Be Returned</span></th>
+                <th scope="col"><span>Number Of Renewals</span></th>
+                <th scope="col"><span>User</span></th>
+                <th scope="col"><span>Copy Book</span></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let loan of loans ;trackBy: trackId">
+                <td><a [routerLink]="['/loan', loan.id, 'view']">{{ loan.id }}</a></td>
+                <td>{{ loan.loanDate | date:'mediumDate' }}</td>
+                <td>{{ loan.dateReturned | date:'mediumDate' }}</td>
+                <td>{{ loan.dateToBeReturned | date:'mediumDate' }}</td>
+                <td>{{ loan.numberOfRenewals }}</td>
+                <td>
+                    <div *ngIf="loan.userId">
+                        <a [routerLink]="['/library-user', loan.userId , 'view']">{{ loan.userId }}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="loan.copyBookId">
+                        <a [routerLink]="['/copy-book', loan.copyBookId , 'view']">{{ loan.copyBookId }}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/loan', loan.id, 'renew']"
+                                class="btn btn-info btn-sm">
+                            <fa-icon icon="eye"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div>
+    <h2 id="page-heading">
+        <span>Information on deadlines and number of days</span>
+    </h2>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="studentTypes?.length === 0">
+        <span>No studentTypes found</span>
+    </div>
+
+    <div class="table-responsive " id="entities" *ngIf="studentTypes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+                <th scope="col"><span>Student Type</span></th>
+                <th scope="col">
+                    <span placement="top" ngbTooltip="Number of days the user can stay with the loan initially">Number Of Days Loan</span>
+                    <fa-icon icon="question" fixedWidth="true"></fa-icon>
+                </th>
+                <th scope="col">
+                    <span placement="top" ngbTooltip="Number of days the user can stay with the loan after a renewal">Number Of Days Renewal</span>
+                    <fa-icon icon="question" fixedWidth="true"></fa-icon>
+                </th>
+                <th scope="col">
+                    <span placement="top" ngbTooltip="Maximum number of books the user can borrow">Max Books On Loan</span>
+                    <fa-icon icon="question" fixedWidth="true"></fa-icon>
+                </th>
+                <th scope="col">
+                    <span placement="top" ngbTooltip="Maximum number of renewals the user can perform">Max Renewal Number</span>
+                    <fa-icon icon="question" fixedWidth="true"></fa-icon>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let studentType of studentTypes ;trackBy: trackId">
+                <td> {{returnStudentType(studentType)}} </td>
+                <td>{{ studentType.numberOfDaysLoan }}</td>
+                <td>{{ studentType.numberOfDaysRenewal }}</td>
+                <td>{{ studentType.maxBooksOnLoan }}</td>
+                <td>{{ studentType.maxRenewalNumber }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

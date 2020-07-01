@@ -1,0 +1,77 @@
+<div>
+    <h3 id="page-heading">
+        <span>Search Books</span>
+    </h3>
+
+    <select class="form-control" name="typeSearch" [(ngModel)]="option" required>
+        <option>Title</option>
+        <option>Author</option>
+        <option>Subject</option>
+        <option>Publisher</option>
+        <option>ISBN</option>
+    </select>
+
+    <input  *ngIf="option != 'Subject'" type="search" class="form-control" name="value"
+           [(ngModel)]="value" required/>
+
+    <select *ngIf="option === 'Subject'" class="form-control" name="value" [(ngModel)]="value" required>
+        <option>Computing</option>
+        <option>Humanities</option>
+        <option>Science</option>
+        <option>Mathematics</option>
+        <option>Social Sciences</option>
+        <option>Languages</option>
+        <option>Engineering</option>
+        <option>Miscellaneous</option>
+    </select>
+
+    <br>
+    <div class="input-group-append">
+        <button type="submit" [disabled]="option === '' || value === ''"
+                (click)="search()"
+                class="btn btn-outline-secondary">
+            <fa-icon icon="book"></fa-icon>
+            <span>Search</span>
+        </button>
+    </div>
+    <br>
+
+    <div class="alert alert-warning" *ngIf="books?.length === 0">
+        <span>No books found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="books?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+                <th scope="col"><span>Title</span></th>
+                <th scope="col"><span>Publisher</span></th>
+                <th scope="col"><span>Publication Year</span></th>
+                <th scope="col"><span>Subjects</span></th>
+                <th scope="col"><span>Authors</span></th>
+                <th scope="col"><span># Copies</span></th>
+                <th scope="col"><span># Available Copies</span></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let book of books ;trackBy: trackId">
+                    <td><a [routerLink]="['/book', book.id, 'view']">{{ book.title }}</a></td>
+                    <td>{{ book.publisher }}</td>
+                    <td>{{ book.publicationYear }}</td>
+                    <td>
+                        <span *ngFor="let subjects of book.subjects; let last = last">
+                            <a class="form-control-static">{{ subjects.subject }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td>
+                        <span *ngFor="let authors of book.authors; let last = last">
+                            <a class="form-control-static">{{ authors.name }}</a>{{ last ? '' : ', ' }}
+                        </span>
+                    </td>
+                    <td>{{ book.totalCopies }}</td>
+                    <td>{{ book.availableCopies }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

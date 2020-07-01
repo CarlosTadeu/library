@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\main",
+    "\\src\\test",
+    "\\src\\test\\javascript",
+    "\\src\\test\\javascript\\spec",
+    "\\src\\test\\javascript\\spec\\app",
+    "\\src\\test\\javascript\\spec\\app\\entities",
+    "\\src\\test\\javascript\\spec\\app\\entities\\author"
+  ],
+  "SelectedNode": "\\src\\test\\javascript\\spec\\app\\entities\\author\\author.component.spec.ts",
+  "PreviewInSolutionExplorer": false
+}
