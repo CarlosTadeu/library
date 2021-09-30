@@ -209,7 +209,9 @@ public class LoanServiceImpl implements LoanService {
        String login = SecurityUtils.getCurrentUserLogin()
            .orElseThrow(() -> new BadRequestAlertException("Invalid user", "loan", "loginnotfound"));
 
-       LibraryUser currentUser = libraryUserRepository.findByRg(login);
+        LibraryUser currentUser = libraryUserRepository.findByCpf(login)
+            .orElseThrow(() -> new BadRequestAlertException("Library User not found", "loan", "userNotFound"));
+
        return loanRepository.findAllByUser(currentUser).stream()
            .map(loanMapper::toDto)
            .collect(Collectors.toCollection(LinkedList::new));

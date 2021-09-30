@@ -24,8 +24,7 @@ public class BookDTO implements Serializable {
     private Integer publicationYear;
 
     private Long totalCopies;
-    private Long AvailableCopies;
+    private Long availableCopies;
     private Set<SubjectDTO> subjects = new HashSet<>();
     private Set<AuthorDTO> authors = new HashSet<>();
-
 }

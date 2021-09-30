@@ -88,7 +88,6 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional(readOnly = true)
     public List<BookDTO> findAll() {
-        log.debug("Request to get all Books");
         return bookRepository.findAllWithEagerRelationships().stream()
             .map(bookMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
